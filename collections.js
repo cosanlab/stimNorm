@@ -1,2 +1,4 @@
-Games = new Mongo.Collection('games');
-Labels = new Mongo.Collection('labels');
+Stims = new Mongo.Collection('stims');
+Responses = new Mongo.Collection('responses');
+
+TurkServer.partitionCollection(Responses);

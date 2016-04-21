@@ -24,16 +24,16 @@
 	Batches.upsert({'name':'main'},{'name':'main',active:true});
 	//Apply basic assigner
 	Batches.find().forEach(function(batch){
-		TurkServer.Batch.getBatch(batch._id).setAssigner(new TurkServer.Assigners.SimpleAssigner);
+		TurkServer.Batch.getBatch(batch._id).setAssigner(new TurkServer.Assigners.SurveyAssigner);
 	});
 });
 
 //Games pre-populated DB
-Meteor.publish('games', function(){
-	return Games.find();
+Meteor.publish('stims', function(){
+	return Stims.find();
 });
 
 //Labels applied
-Meteor.publish('labels',function(){
-	return Labels.find()
+Meteor.publish('responses',function(){
+	return Responses.find()
 });

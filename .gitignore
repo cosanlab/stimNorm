@@ -2,3 +2,5 @@ node_modules/
 private/
 .DS_Store
 .meteor
+settings.json
+ssl.pem
