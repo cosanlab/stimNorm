@@ -4,3 +4,4 @@ private/
 .meteor
 settings.json
 ssl.pem
+mup.json

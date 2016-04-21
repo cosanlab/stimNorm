@@ -21,9 +21,9 @@ Router.route('/lobby',{
   },
   action: function(){
     var user = Responses.findOne(Meteor.userId());
-    if (user.status == 'consent'){
+    if (user.consent == false && user.status == 'consent'){
       this.render('consent');
-    } else{
+    } else if(user.consent == true && user.status == 'instructions'){
       this.render('instructions');
     }
   },

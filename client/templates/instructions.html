@@ -8,44 +8,24 @@
 	<h3 align="center"> Thank you for accepting this HIT</h3>
 	<blockquote class = "instr">
 		For the best experience please scroll/adjust the window until you can see both the top and bottom banners of the screen.<br><br>
-		Please read the following set of instructions <i>carefully</i> to learn how to play the game.<br><br>
-		You may move forward and backwards through any page of these instructions at any time.
+		Please read the following set of instructions <i>carefully</i>.<br><br>You may move forward and backwards through any page of these instructions at any time.
 	</blockquote>
 	<br>
 	<p align = "center" style = "font-size:14px"> Click next to begin the instructions </p>
 </template>
 
 <template name="overview">
-	<h3 align="center">Game Overview</h3>
+	<h3 align="center">Overview</h3>
 	<blockquote class = "instr">
-	In this game you will be making a series of decisions about how to allocate points with <b>{{otherPlayers}} other players in real-time</b> over the course of {{numRounds}} rounds. Each player will be given their own private account and a separate group account will be shared by all players. At the end of the game we will randomly select one of the rounds and pay you a bonus based on the number of points earned in that round at the rate of: <b>1 point = 2 cents</b>.
-	</blockquote>
-	<blockquote class = "instr">
-	In the beginning of every round of you will decide <b>how many of your own points you would like to contribute to the group account.</b> At the end of every round, the group account will be multiplied by 1.5 and points will be <b>evenly</b> redistributed to all players.
+	In this HIT you will be reading a series of chat conversations between individuals and applying a label that best describes the content of what each individual is saying. You will see conversations between <b>3 different pairs </b> of people. Each conversation will consist of <b>10 exchanges</b>. Each exchange will be comprised of <b>2 messages from each individual</b>.
 	</blockquote>
 </template>
 
-<template name = "rounds">
-	<h3 align = "center">Structure of Each Round</h3>
+<template name = "context">
+	<h3 align = "center">Overview (con't)</h3>
 	<blockquote class = "instr">
-		{{#if batchCond.fullInfo}}
-			Afer you decide how many points to contribute to the group account you will be able to see the contributions made by
-			<b>all</b> the other players. These are all {{otherPlayers}} other people you are playing with. Across every round of the game you will always see contributions from <b>all</b> the players.
-		{{else}}
-			Afer you decide how many points to contribute to the group account you will be able to see the contributions made by <b>two</b> other players. These players will be randomly selected from the {{otherPlayers}} other people you are playing with. Across every round of the game you will always see contributions from the <b>same two</b> players.
-		{{/if}}
+		These conversations occurred during a game in which individuals were making a series of monetary decisions with a group of people. Each exchange took place after individuals decided how much money they wanted keep for themselves versus share with the entire group and they same choices made by other people playing this game. 
 	</blockquote>
-	{{#if batchCond.messaging}}
-		<blockquote class = "instr">
-			Next, you will be able to communicate with <b>one</b> other player.
-	 	 	In order to communicate, you will be able to send and receive two messages (140 characters max) to this other player. Upon sending your first message you will be shown their first message sent to you. Following this you will be able to second a second message and likewise see their second message sent to you.
-		</blockquote>
-	{{/if}}
-		<blockquote class = "instr">
-			Following this, the group account multiplier (1.5x) will be applied and the group account will be divided evenly amongst all {{numPlayers}} players (You + {{otherPlayers}} players). Finally the round will end and you will be see how much each player received from the group account and
-			{{#if batchCond.fullInfo}} <b>all</b>{{else}}the <b>same two</b>{{/if}}
-			 players' total earnings that round.
-		</blockquote>
 </template>
 
 <template name = "exampleRound">
