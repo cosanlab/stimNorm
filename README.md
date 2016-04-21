@@ -2,7 +2,7 @@
 
 Quick Meteor application that allows users to add a list of files (e.g. pictures, text) and collect information about them (e.g. ratings, labels) from users on Mechanical Turk.  
 
-Currently this is not *at all* modular and only works with a single kind of stimulus (text) in a predetermined JSON format (highly nested dictionary). See the roadmap below for how this will be expanded (if/when I have time).  
+Currently this is not *at all* modular and only works with a single kind of stimulus (text) in a predetermined JSON format (highly nested dictionary). See the roadmap below for how this will be expanded (if/when I have time -EJ).  
 
 #### Roadmap
 - UI based file uploading system, with autoconversion to mongodb ([example](https://themeteorchef.com/snippets/importing-csvs/))
