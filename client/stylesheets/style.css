@@ -1,4 +1,4 @@
-/* CSS declarations go here */
+/* Main */
 body{
     padding: 80px 0 0 0 ;
 }
@@ -9,6 +9,39 @@ img#logo {
 img.avatar{
   margin-right: 2%;
 }
+
+/* Chat bubbles */
+.bubbleLeft {
+position: relative;
+min-height: 50px;
+width: 90%;
+height: 100%;
+padding: 5px 5px 5px 5px;
+background: #d9edf7;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+margin-top: 1%;
+margin-left: 5%;
+color: #275A74;
+}
+
+.bubbleRight {
+position: relative;
+min-height: 50px;
+width: 90%;
+height: 100%;
+padding: 5px 5px 5px 5px;
+background: #FFE5E5;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+margin-top: 1%;
+margin-left: 5%;
+color:#7F0000;
+}
+
+
 
 /* Instructions example round */
 .exampleRound {
@@ -118,20 +151,7 @@ span.incorrect{
   font-size: 14px;
 }
 
-.bubbleUser {
-position: relative;
-min-height: 30px;
-width: 100%;
-height: 100%;
-padding: 10px 10px 0px 10px;
-background: #d9edf7;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-margin-top: 1%;
-margin-left: 5%;
-color: #275A74;
-}
+
 
 .bubbleTriangleUser {
 content: '';
@@ -146,20 +166,7 @@ left: -9px;
 top: 9px;
 }
 
-.bubbleOther {
-position: relative;
-min-height: 50px;
-width: 100%;
-height: 100%;
-padding: 10px 10px 0px 10px;
-background: #FFE5E5;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-margin-top: 1%;
-margin-right: 5%;
-color:#7F0000;
-}
+
 
 .bubbleTriangleOther {
 content: '';

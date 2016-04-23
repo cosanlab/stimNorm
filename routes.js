@@ -39,14 +39,14 @@ Router.route('/survey',{
   action: function(){
     var user = Responses.findOne(Meteor.userId());
     if (user.status == 'instructions'){
-      this.render('instructions');
+      this.render('instructionsInteractive');
     } else if(user.status == 'survey'){
-      this.render('survey');
+      this.render('surveyMain');
     }
   },
 
   onBeforeAction: function() {
-    if (Responses.findOne(Meteor.userId()).consent){
+    if (!Responses.findOne(Meteor.userId()).consent){
       return this.render("tsUserAccessDenied");
     } else{
       return this.next();
