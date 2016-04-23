@@ -3,7 +3,7 @@ Meteor.startup(function(){
 	Meteor.defer(function(){
 		Tracker.autorun(function(){
 			if (TurkServer.inLobby()){
-				Router.go('lobby');
+				Router.go('consent');
 			}
 			else if (TurkServer.inExperiment()){
 				Router.go('survey');
@@ -17,12 +17,7 @@ Meteor.startup(function(){
 
 //Data subscriptions
 Tracker.autorun(function(){
-	var group = TurkServer.group();
-	if (group==null){
-		return;
-	}
-	Meteor.subscribe('stims');
-	Meteor.subscribe('responses',group);
+	Meteor.subscribe('Responses');
 });
 
 //New Spacebars function that should work on all templates

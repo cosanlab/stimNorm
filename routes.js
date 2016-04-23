@@ -12,20 +12,13 @@ Router.route('/', {
   template: 'home',
 });
 
-//When users accept the HIT they're first shown the consent; if they agree to the consent then they are show the instructions 
-Router.route('/lobby',{
-  name: 'lobby',
-  template: 'lobby',
+Router.route('/consent',{
+  name: 'consent',
   waitOn: function(){
-    return [Meteor.subscribe('responses')];
+    return [Meteor.subscribe('Responses')];
   },
   action: function(){
-    var user = Responses.findOne(Meteor.userId());
-    if (user.consent == false && user.status == 'consent'){
       this.render('consent');
-    } else if(user.consent == true && user.status == 'instructions'){
-      this.render('instructions');
-    }
   },
   onBeforeAction: function() {
     if (!Meteor.user()) {
@@ -33,18 +26,31 @@ Router.route('/lobby',{
     } else{
       return this.next();
     }
-
   }
 }); 
 
 //After moving through the instructions users will arrive at the main survey
 Router.route('/survey',{
-  name: 'game',
+  name: 'survey',
+
   waitOn: function(){
-    return [Meteor.subscribe('stims'), Meteor.subscribe('responses')];
+    return [Meteor.subscribe('Responses')];
   },
   action: function(){
-    this.render('survey');
+    var user = Responses.findOne(Meteor.userId());
+    if (user.status == 'instructions'){
+      this.render('instructions');
+    } else if(user.status == 'survey'){
+      this.render('survey');
+    }
+  },
+
+  onBeforeAction: function() {
+    if (Responses.findOne(Meteor.userId()).consent){
+      return this.render("tsUserAccessDenied");
+    } else{
+      return this.next();
+    }
   }
 });
 
@@ -54,7 +60,7 @@ Router.route('/endSurvey',{
   template: 'endSurvey',
   
   waitOn: function(){
-    return Meteor.subscribe('responses');
+    return Meteor.subscribe('Responses');
   },
   action: function(){
       this.render('endSurvey');

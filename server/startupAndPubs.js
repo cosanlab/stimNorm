@@ -7,9 +7,9 @@
  	done = Meteor.bindEnvironment(function(files){
  		return _.each(files,function(filename){
  			var game = JSON.parse(Assets.getText(filename));
- 			var exists = Games.findOne(game._id);
+ 			var exists = Stims.findOne(game._id);
  			if(!exists){
- 				Games.insert(game);
+ 				Stims.insert(game);
  				console.log('Game: ' + filename + ' added to db!');
  			} else{
  				console.log('Game: ' + filename + ' already in db!')
@@ -19,21 +19,24 @@
  		throw e;
  	});
  	done(files)
+ 	try {
+	 	//Create a single batch
+		Batches.upsert({'name':'main'},{'name':'main',active:true});
+		TurkServer.ensureTreatmentExists({'name':'main'});
+		Batches.update({name:'main'},{$addToSet:{treatments: 'main'}});
+		//Apply basic assigner
+		Batches.find().forEach(function(batch){
+			TurkServer.Batch.getBatch(batch._id).setAssigner(new TurkServer.Assigners.SurveyAssigner());
+		});
+	} catch(e){
+		console.log(e);
+		return;
+	}
 
- 	//Create a single batch
-	Batches.upsert({'name':'main'},{'name':'main',active:true});
-	//Apply basic assigner
-	Batches.find().forEach(function(batch){
-		TurkServer.Batch.getBatch(batch._id).setAssigner(new TurkServer.Assigners.SurveyAssigner);
-	});
-});
-
-//Games pre-populated DB
-Meteor.publish('stims', function(){
-	return Stims.find();
 });
 
 //Labels applied
-Meteor.publish('responses',function(){
-	return Responses.find()
+Meteor.publish('Responses',function(){
+	var currentUser = this.userId;
+	return Responses.find(currentUser)
 });

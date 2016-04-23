@@ -1,4 +1,4 @@
-var tutorialSteps = [
+/*var tutorialSteps = [
 	{
 		template: "accept"
 	},
@@ -217,3 +217,4 @@ Template.quiz.helpers({
 		Meteor.call('incQuizAttempts',currentUser, gameId, userInst);
 	}
 });
+*/
