@@ -1,8 +1,12 @@
 Template.survey.helpers({
-	'pairs': function(){
+	//Find the first pair for which the user has not provided any labels
+	'data':function(){
 		var data = Responses.findOne();
-		console.log(data.stimData.pairs);
-		return data.stimData.pairs;
+		var idx = _.findIndex(data.responses, function(d){return d.A.length == 0 && d.B.length==0;});
+		return {
+			exchanges: data.stimData.pairs[idx].rounds,
+			pairNum: idx+1
+		};
 	}
 });
 
@@ -15,5 +19,9 @@ Template.survey.events({
 		var x = template.find('input:radio[name=radioRight]:checked')
 		console.log($(x).val());
 	},
+	'click button':function(event){
+		event.preventDefault();
+		//Look up next pair
+	}
 
 });

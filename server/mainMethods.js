@@ -2,11 +2,11 @@ Meteor.methods({
 	//Add each new user to the database and assign them to a randomly selected stimulus, storing the stimulus data with the user data
 	'addUser':function(currentUser, workerId){
 		var doc = _.sample(Stims.find().fetch(),1);
-		var responseData = {
-			1:[],
-			2:[],
-			3:[]
-		};
+		var responseData = [
+			{A:[],B:[]},
+			{A:[],B:[]},
+			{A:[],B:[]}
+		];
 		var data = {
 			_id: currentUser,
 			workerId: workerId,
@@ -46,3 +46,10 @@ Meteor.methods({
 
 	}
 });
+
+//Function to make a variable-based dot-notation query for updating a nested mongo document 
+function makePQuery(currentUser,field,value){
+	var pKey = {};
+	pKey['players.' + currentUser + '.' + field] = value;
+	return pKey;
+}
