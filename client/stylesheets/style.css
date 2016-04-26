@@ -75,8 +75,18 @@ div.exchangeInfo{
 
 div.exchangeInfo:hover{
   background-color: #d1d1e0;
-
 }
+
+p#submitValidation{
+  font-size: 16px;
+  background-color: #ffcccc;
+  color: #990000;
+  visibility: hidden;
+  margin-left: -10%;
+  margin-right: -10%;
+  margin-top: -5%;
+}
+
 /* Player prompts during game */
 .well-text{
   margin-top: 0%;

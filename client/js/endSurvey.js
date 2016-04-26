@@ -13,19 +13,13 @@ Template.endSurvey.events({
 	'click button': function(event){
 		event.preventDefault();
 		var currentUser = Meteor.userId();
-		var player = Players.findOne(currentUser);
+		var user = Responses.findOne(currentUser);
 		var feedback = $('#feedback').val();
 		var age = $('#age').val();
 		var belief = $('#belief').val();
 		var results;
 		if(!feedback){
-			if(player.status == 'failedQuiz'){
-				feedback = 'FAILED QUIZ';
-			} else if(player.status == 'lobbyTimeout'){
-				feedback = 'LOBBY TIMEOUT';
-			} else{
-				feedback = 'NA';
-			}
+			feedback = 'NA';
 		}
 		if (!age){
 			age = 'NA';

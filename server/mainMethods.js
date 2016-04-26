@@ -33,6 +33,19 @@ Meteor.methods({
 			console.log('TURKER: ' + Date() + ': ' + asst.workerId + ' did NOT consent! Sent to exit survey!\n');
 		}
 	},
+	'addResponses': function(currentUser,data){
+		var doc = Responses.findOne(currentUser);
+		var idx = String(_.findIndex(doc.responses, function(d){return d.A.length == 0 && d.B.length==0;}));
+		var queryDat = {};
+		queryDat['responses.'+idx+'.A'] = data[0];
+		queryDat['responses.'+idx+'.B'] = data[1];
+		Responses.update(currentUser,{$set:queryDat});
+		if (idx == doc.responses.length-1){
+			Meteor.call('updateInfo',currentUser,{'status':'endSurvey'},'set');
+			var exp = TurkServer.Instance.currentInstance();
+			exp.teardown(returnToLobby = true);
+		}
+	},
 
 	//General purpose document modification function
 	'updateInfo': function(currentUser,data,operation){
