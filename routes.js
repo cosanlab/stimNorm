@@ -39,9 +39,9 @@ Router.route('/survey',{
   action: function(){
     var user = Responses.findOne(Meteor.userId());
     if (user.status == 'instructions'){
-      this.render('instructionsInteractive');
+      this.render('instructions');
     } else if(user.status == 'survey'){
-      this.render('surveyMain');
+      this.render('survey');
     }
   },
 

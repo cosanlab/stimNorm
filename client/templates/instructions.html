@@ -1,5 +1,6 @@
-<!---<template name = "instructions">
+<template name = "instructions">
 	<div class = "container-fluid" id = "main">
+		{{> sampleExchange}}
 		{{> tutorial options}}
 	</div>
 </template>
@@ -7,7 +8,7 @@
 <template name="accept">
 	<h3 align="center"> Thank you for accepting this HIT</h3>
 	<blockquote class = "instr">
-		For the best experience please scroll/adjust the window until you can see both the top and bottom banners of the screen.<br><br>
+		For the best experience please maximize this window so it takes up the entire screen. <br><br>
 		Please read the following set of instructions <i>carefully</i>.<br><br>You may move forward and backwards through any page of these instructions at any time.
 	</blockquote>
 	<br>
@@ -17,7 +18,7 @@
 <template name="overview">
 	<h3 align="center">Overview</h3>
 	<blockquote class = "instr">
-	In this HIT you will be reading a series of chat conversations between individuals and applying a label that best describes the content of what each individual is saying. You will see conversations between <b>3 different pairs </b> of people. Each conversation will consist of <b>10 exchanges</b>. Each exchange will be comprised of <b>2 messages from each individual</b>.
+	In this HIT you will be reading a series of chat conversations between individuals and applying a label that best describes the content of what each individual is saying. You will see conversations between <b>3 different pairs </b> of people. Each conversation will consist of <b>10 rounds of exchanges</b>. Each exchange will be comprised of <b>2 messages from each individual</b>.
 	</blockquote>
 </template>
 
@@ -28,92 +29,95 @@
 	</blockquote>
 </template>
 
-<template name = "exampleRound">
-	<h3 align = "center">Example Round</h3>
-	<p align = "center" style = 'font-size: 16px'>To illustrate the game let's look at an example round:</p>
 
-		<ol class = "exampleRound">
-		<li class = "exampleRound">You will receive 100 points and choose how many to contribute to the group account; let's say you choose to contribute 50 points</li>
-		{{#if batchCond.fullInfo}}
-		<li class = "exampleRound">You will be able to see the contributions made by all the other players; let's say you see contributions of: 100, 0, 50, 50, and 50 points</li>
-		{{else}}
-		<li class = "exampleRound">You will be able to see the contributions made by two other players; let's say you see contributions of: 75 and 25 points</li>
-		{{/if}}
-		{{#if batchCond.messaging}}
-		<li class = "exampleRound">You will be able to send and receive two messages with another player</li>
-		{{/if}}
-		<li class = "exampleRound">You will receive the outcome of splitting the group account after the multiplier (1.5x) is applied; let's say you receive 75 points at the end of the round; your total earned for that round would be <b>125 points</b> (50 you didn't contribute + 75 you earned)</li>
-		</ol>
-
-	{{#if batchCond.fullInfo}}
-		<blockquote class = "instr">
-			Based on this you can deduce that the group earned a total of 450 points and all players contributed a total of 300 points: 
-		</blockquote>
-		<p align = "center" style= 'font-size: 14px; margin-top: -2%'>
-			75 (each player's earning) * {{numPlayers}} (total number of players) = 
-			<br>
-			<b>450 (total of group account after multiplier)</b>
-		</p>
-		<p align = "center" style= 'font-size: 14px'>
-			450 / 1.5 (group multiplier) = 50 (your contribution) + 100 + 0 + 50 + 50 + 50 = 
-			<br>
-			<b>300 (sum of all contributions)</b>
-		</p>
-	{{else}}
-		<blockquote class = "instr">
-			Based on this you can deduce that the group earned a total of 450 points and the players whose contributions you can't see must have contributed a total of 150 points:
-		</blockquote>
-		<p align = "center" style= 'font-size: 14px'>
-			75 (each player's earning) * {{numPlayers}} (total number of players) = 
-			<br>
-			<b>450 (total of group account)</b>
-		</p>
-		<p align = "center" style= 'font-size: 14px'>
-		450 / 1.5 (group multiplier) = 300 - 50 (your contribution) - 75 - 25 = 
-			<br>
-			<b>150 (sum of players you can't see)</b>
-		</p>
-	{{/if}}
+<template name = "labels">
+info about labels
 </template>
 
-<template name = "recap">
-	<h3 align="center">Recap</h3>
-	<blockquote class = "instr">
-	To review, you will play a game with {{otherPlayers}} other players consisting of {{numRounds}} rounds. Each round will comprise
-	{{#if batchCond.messaging}} 4 {{else}} 3 {{/if}}parts:<br><br>
-	<ol>
-		<li>Each player will receive 100 points and decide how many of their points to contribute to the group account</li>
-		<li>Each player will be able to see the contributions made by {{#if batchCond.fullInfo}}<b><i>all</i></b>{{else}} <b><i>two</i></b>* {{/if}} of the other {{otherPlayers}} players
-		</li>
-		 {{#if batchCond.messaging}}
-		<li>Each player will be able to send and receive two messages to <b><i>one</i></b> randomly selected player*</li>
-		{{/if}}
-		<li>Each player will see how much they earned after the group account multiplier is applied and group account is redistributed</li>
-	</ol>
-	</blockquote>
-	<br>
-	{{#unless batchCond.fullInfo}}
-	<p><i>*Players will always see the contributions/earnings of the <b>same</b> two players on every round</i></p>
-	{{/unless}}
-	{{#if batchCond.messaging}}
-	<p><i>*Players will always be communicating with the <b>same</b> player on every round</i></p>
-	{{/if}}
+<template name = "layout">
+here is the layout
 </template>
 
-<template name = "timing">
-	<h3 align="center">Connection and Timing Considerations</h3>
-	<blockquote class = "instr">
-		Because you are interacting in <b>real time</b> with {{otherPlayers}} other players, it is <b>extremely important</b> that you make your decisions and complete your communication within a timely manner.<br><br>
-		If you idle for too long during the game you will <b>forfeit</b> any bonuses you could have earned during this HIT.<br><br>
-		If your game partners have connection issues you will still be paid for completing the HIT including any bonuses earned.
-	</blockquote>
+<template name = "example">
+look at this example
 </template>
 
-<template name = "preQuiz">
-	<h3 align="center">Please be sure you have understood these instructions before proceeding</h3>
-	<blockquote class = "instr">
-		On the next page we will ask you some questions to ensure your understanding. If you fail to answer these questions correctly you will not be eligible to play and complete this HIT.<br><br>
-		You may move backwards and forwards through these instructions screens as much as you like before and during the quiz.
-	</blockquote>
+<template name = "summary">
+Recap info
 </template>
--->
+
+<template name ="sampleExchange">
+	<div class = "container-fluid exchangeInfo">
+		<div class = "row">
+			<div class = "col-xs-5">
+				<h5 align="center">Message 1</h5>
+				<p align="center" class="bubbleLeft">Sample message 1 from Player A</p>
+			</div>
+			<div class = "col-xs-2">
+				<h3 align="center">Round 1</h3>
+			</div>
+			<div class = "col-xs-5">
+				<h5 align="center">Message 1</h5>
+				<p align="center" class="bubbleRight">Sample message 1 from Player B</p>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col-xs-5">
+				<h5 align="center">Message 2</h5>
+				<p align="center" class = "bubbleLeft">Sample message 2 from Player A</p>
+			</div>
+			<div class = "col-xs-5 col-xs-offset-2">
+				<h5 align="center">Message 2</h5>
+				<p align="center" class = "bubbleRight">Sample message 2 from Player B</p>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col-xs-5">
+				<form role="form" align="center" class = "leftLabel">
+				    <label class="radio-inline">
+			      		<input type="radio" name="radioLeft" value = "gossip">Gossip
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioLeft" value = "strategy">Strategy
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioLeft" value = "socialConn">Chit-Chat
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioLeft" value = "gameComm">Game Commentary
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioLeft" value = "nonsense">Nonsense
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioLeft" value = "other">Other
+			    	</label>
+			  	</form>
+		  	</div>
+		  	<div class = "col-xs-5 col-xs-offset-2">
+				<form role="form" align="center" class = "rightLabel">
+					<label class="radio-inline">
+			      		<input type="radio" name="radioRight" value = "gossip">Gossip
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioRight" value = "strategy">Strategy
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioRight" value = "socialConn">Chit-Chat
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioRight" value = "gameComm">Game Commentary
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioRight" value = "nonsense">Nonsense
+			    	</label>
+			    	<label class="radio-inline">
+			      		<input type="radio" name="radioRight" value = "other">Other
+			    	</label>
+			  	</form>
+		  	</div>
+	  	</div>
+	  	<br><br>
+  	</div>
+  	<hr>
+</template>

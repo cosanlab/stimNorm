@@ -1,0 +1,25 @@
+<template name= "survey">
+	<div class = "container-fluid">
+		<div class = "row well well-sm navbar-fixed-top survey-banner">
+			<div class = "col-xs-5 survey-column-title">
+				<h3 align="center"><u>Person 1</u></h3>
+			</div>
+				<div class = "col-xs-2 survey-column-title text-align">
+					<h2 align="center"><i>Pair {{data.pairNum}}</i></h2>
+				</div>
+				<div class = "col-xs-5 survey-column-title">
+					<h3 align="center"><u>Person 2</u></h3>
+				</div>
+		</div>
+		{{#each data.exchanges}}
+			{{> exchange}}
+		{{/each}}
+		<div class = "row">
+			<div class="col-xs-2 col-xs-offset-5 text-center">
+				<button type="button" class="btn btn-primary btn-lg submitPair">Submit Pair {{data.pairNum}}</button>
+				<br>
+				<p id='submitValidation'>One or more of the labels are unanswered!</p>
+			</div>
+		</div>
+	</div>
+</template>
