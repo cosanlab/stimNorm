@@ -10,15 +10,12 @@ var tutorialSteps = [
 	},
 	{
 		template: "labels",
-		spot: ".exchangeInfo"
 	},
 	{
 		template: "layout",
-		spot: ".leftLabel, .rightLabel"
 	},
 	{	
 		template: "example",
-		spot: ".bubbleLeft, .bubbleRight"
 	},
 	{
 		template: "summary"

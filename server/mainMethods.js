@@ -2,11 +2,14 @@ Meteor.methods({
 	//Add each new user to the database and assign them to a randomly selected stimulus, storing the stimulus data with the user data
 	'addUser':function(currentUser, workerId){
 		var doc = _.sample(Stims.find().fetch(),1);
-		var responseData = [
-			{A:[],B:[]},
-			{A:[],B:[]},
-			{A:[],B:[]}
-		];
+		for (var i = 0; i<doc.pairs.length; i++){
+			for (var j = 0; j<doc.pairs[i].rounds.length; j++){
+				doc.pairs[i].rounds[j]['Am1Lab'] = '';
+				doc.pairs[i].rounds[j]['Am2Lab'] = '';
+				doc.pairs[i].rounds[j]['Bm1Lab'] = '';
+				doc.pairs[i].rounds[j]['Bm2Lab'] = '';
+			}
+		}
 		var data = {
 			_id: currentUser,
 			workerId: workerId,
@@ -14,7 +17,6 @@ Meteor.methods({
 			status: 'consent',
 			consent: false,
 			stimData: doc,
-			responses: responseData
 		};
 		Responses.insert(data);
 	},
