@@ -40,3 +40,11 @@ Template.survey.events({
 	}
 
 });
+
+function makeConvo(data){
+	var idx = _.findIndex(data.stimData.pairs, function(pair){
+		return pair.labeled === false;
+	});
+	var pairData = data.stimData.pairs[idx].rounds;
+
+}

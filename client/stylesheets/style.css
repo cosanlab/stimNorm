@@ -1,6 +1,7 @@
 /* Main */
 body{
-    padding: 150px 0 0 0 ;
+    padding-top: 50px;
+    padding-bottom: 50px !important;
 }
 img#logo {
     width: auto;
@@ -24,13 +25,29 @@ img.avatar{
   height: 50px;
 }
 .survey-column-title{
-  margin-top: -1%
+  margin-top: -15px;
+  margin-bottom: 0px;
+
 }
 .navbar-header {
     height: 80px;
     width: auto;
     padding: 0;
     margin: 0;
+}
+
+/* Footer styling */
+.footer{
+  position:fixed;
+  width:100%;
+  bottom: 0%;
+  height: 4%;
+  background-color: #000033;
+}
+.footerText {
+  font-size: 13px;
+  margin-top: 10px;
+  color:#FFFFFF;
 }
 
 /* Chat bubbles */
@@ -45,8 +62,22 @@ background: #d9edf7;
 -moz-border-radius: 10px;
 border-radius: 10px;
 margin-top: 1%;
-margin-left: 5%;
+margin-left: 10%;
 color: #275A74;
+}
+
+.bubbleTriangleLeft {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 24px 15px 0;
+border-color: transparent #d9edf7;
+display: block;
+width: 0;
+z-index: 1;
+left: -8px;
+top: 16px;
+margin-left: 11%;
 }
 
 .bubbleRight {
@@ -60,22 +91,33 @@ background: #FFE5E5;
 -moz-border-radius: 10px;
 border-radius: 10px;
 margin-top: 1%;
-margin-left: 5%;
+margin-left: 0%;
 color:#7F0000;
+}
+
+.bubbleTriangleRight {
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 0px 15px 24px;
+border-color: transparent #FFE5E5;
+display: block;
+width: 0;
+z-index: 1;
+right: -8px;
+top: 16px;
+margin-right: 11%;
+}
+
+/* Labels */
+td {
+  padding: 0px 15px 0 20px !important;
 }
 
 .submitPair{
   margin-bottom: 10%;
 }
 
-div.exchangeInfo{
-  margin-top: -1.25%;
-  margin-bottom: -1.25%;  
-}
-
-div.exchangeInfo:hover{
-  background-color: #d1d1e0;
-}
 
 p#submitValidation{
   font-size: 16px;
@@ -85,22 +127,6 @@ p#submitValidation{
   margin-left: -10%;
   margin-right: -10%;
   margin-top: -5%;
-}
-
-/* Player prompts during game */
-.well-text{
-  margin-top: 0%;
-  font-weight: bold;
-}
-
-/* Instructions example round */
-.exampleRound {
-  font-size: 15px;
-  margin-left: -2%;
-  margin-bottom: 0%;
-}
-li.exampleRound{
-  margin-bottom: 2%;
 }
 
 blockquote.instr {
@@ -248,20 +274,6 @@ input[type=range].beliefRating{
   margin-right: 2%;
 }
 
-/* Footer styling */
-.footer{
-  position:fixed;
-  width:100%;
-  bottom: 0;
-}
-.footbanner{
-  border:none;
-  height:25px; 
-  color:#000033; 
-  border-color:#000033; 
-  background-color:#000033; 
-  margin-top:2px
-}
 
 
 .icon-bar {
@@ -303,133 +315,3 @@ input[type=range].beliefRating{
   color: #000033
 }
 
-ul.nav-wizard {
-  background-color: #f9f9f9;
-  border: 1px solid #d4d4d4;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  *zoom: 1;
-  position: relative;
-  overflow: hidden;
-}
-ul.nav-wizard:before {
-  display: block;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 46px;
-  height: 47px;
-  border-top: 1px solid #d4d4d4;
-  border-bottom: 1px solid #d4d4d4;
-  z-index: 11;
-  content: " ";
-}
-ul.nav-wizard:after {
-  display: block;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 138px;
-  height: 47px;
-  border-top: 1px solid #d4d4d4;
-  border-bottom: 1px solid #d4d4d4;
-  z-index: 11;
-  content: " ";
-}
-ul.nav-wizard li {
-  position: relative;
-  float: left;
-  height: 46px;
-  display: inline-block;
-  text-align: middle;
-  padding: 0 20px 0 30px;
-  margin: 0;
-  font-size: 16px;
-  line-height: 46px;
-}
-ul.nav-wizard li a {
-  color: #000033;
-  padding: 0;
-}
-ul.nav-wizard li a:hover {
-  background-color: transparent;
-}
-ul.nav-wizard li:before {
-  position: absolute;
-  display: block;
-  border: 24px solid transparent;
-  border-left: 16px solid #d4d4d4;
-  border-right: 0;
-  top: -1px;
-  z-index: 10;
-  content: '';
-  right: -16px;
-}
-ul.nav-wizard li:after {
-  position: absolute;
-  display: block;
-  border: 24px solid transparent;
-  border-left: 16px solid #f9f9f9;
-  border-right: 0;
-  top: -1px;
-  z-index: 10;
-  content: '';
-  right: -15px;
-}
-ul.nav-wizard li.active {
-  color: #3a87ad;
-  background: #d9edf7;
-}
-ul.nav-wizard li.active:after {
-  border-left: 16px solid #d9edf7;
-}
-ul.nav-wizard li.active a,
-ul.nav-wizard li.active a:active,
-ul.nav-wizard li.active a:visited,
-ul.nav-wizard li.active a:focus {
-  color: #3a87ad;
-  background: #d9edf7;
-}
-ul.nav-wizard .active ~ li {
-  color: #999999;
-  background: #ededed;
-}
-ul.nav-wizard .active ~ li:after {
-  border-left: 16px solid #ededed;
-}
-ul.nav-wizard .active ~ li a,
-ul.nav-wizard .active ~ li a:active,
-ul.nav-wizard .active ~ li a:visited,
-ul.nav-wizard .active ~ li a:focus {
-  color: #999999;
-  background: #ededed;
-}
-ul.nav-wizard.nav-wizard-backnav li:hover {
-  color: #000033;
-  background: #f6fbfd;
-}
-ul.nav-wizard.nav-wizard-backnav li:hover:after {
-  border-left: 16px solid #f6fbfd;
-}
-ul.nav-wizard.nav-wizard-backnav li:hover a,
-ul.nav-wizard.nav-wizard-backnav li:hover a:active,
-ul.nav-wizard.nav-wizard-backnav li:hover a:visited,
-ul.nav-wizard.nav-wizard-backnav li:hover a:focus {
-  color: #000033;
-  background: #f6fbfd;
-}
-ul.nav-wizard.nav-wizard-backnav .active ~ li {
-  color: #999999;
-  background: #ededed;
-}
-ul.nav-wizard.nav-wizard-backnav .active ~ li:after {
-  border-left: 16px solid #ededed;
-}
-ul.nav-wizard.nav-wizard-backnav .active ~ li a,
-ul.nav-wizard.nav-wizard-backnav .active ~ li a:active,
-ul.nav-wizard.nav-wizard-backnav .active ~ li a:visited,
-ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
-  color: #999999;
-  background: #ededed;
-}

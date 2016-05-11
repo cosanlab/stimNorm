@@ -9,6 +9,7 @@ Meteor.methods({
 				doc.pairs[i].rounds[j]['Bm1Lab'] = '';
 				doc.pairs[i].rounds[j]['Bm2Lab'] = '';
 			}
+			doc.pairs[i]['labeled'] = false;
 		}
 		var data = {
 			_id: currentUser,

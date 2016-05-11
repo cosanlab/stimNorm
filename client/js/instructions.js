@@ -9,9 +9,6 @@ var tutorialSteps = [
 		template: "context"
 	},
 	{
-		template: "labels",
-	},
-	{
 		template: "layout",
 	},
 	{	
