@@ -62,8 +62,9 @@ background: #d9edf7;
 -moz-border-radius: 10px;
 border-radius: 10px;
 margin-top: 1%;
-margin-left: 10%;
+margin-left: 6.5%;
 color: #275A74;
+font-size: 16px;
 }
 
 .bubbleTriangleLeft {
@@ -76,8 +77,8 @@ display: block;
 width: 0;
 z-index: 1;
 left: -8px;
-top: 16px;
-margin-left: 11%;
+top: 20px;
+margin-left: 6.75%;
 }
 
 .bubbleRight {
@@ -91,8 +92,9 @@ background: #FFE5E5;
 -moz-border-radius: 10px;
 border-radius: 10px;
 margin-top: 1%;
-margin-left: 0%;
+margin-left: 1.25%;
 color:#7F0000;
+font-size: 16px;
 }
 
 .bubbleTriangleRight {
@@ -105,17 +107,31 @@ display: block;
 width: 0;
 z-index: 1;
 right: -8px;
-top: 16px;
-margin-right: 11%;
+top: 20px;
+margin-right: 8.75%;
 }
 
 /* Labels */
 td {
   padding: 0px 15px 0 20px !important;
 }
+.labelTable {
+  margin-left: 2%;
+}
+
+.labelsLeft{
+  padding-right: 1.5%;
+  padding-left: 3%;
+}
+
+.labelsRight{
+  padding-right: 3%;
+  padding-left: 1.25%;
+}
+
 
 .submitPair{
-  margin-bottom: 10%;
+  margin-top: 20%;
 }
 
 

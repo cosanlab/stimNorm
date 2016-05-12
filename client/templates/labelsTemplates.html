@@ -1,23 +1,18 @@
-<template name = "labelsLeft">
+<!-- <template name = "labelsLeft">
 	<div class = "row">
-		<div class = "col-xs-6">
+		<div class = "col-xs-6 labelTable">
 		<table>
 		<tbody>
 			<tr>
 				<td> 
 				<label class="checkbox">
-	      			<input type="checkbox" name="checkBoxLeft" value = "gossip">Gossip
-		    	</label>
-		    	</td>
-		    	<td> 
-				<label class="checkbox">
 	      			<input type="checkbox" name="checkBoxLeft" value = "inquiry">Inquiry
-	      			</label>
+		    	</label>
 		    	</td>
 		    	<td> 
 				<label class="checkbox">
 	      			<input type="checkbox" name="checkBoxLeft" value = "affirmation">Affirmation
-		    	</label>
+	      			</label>
 		    	</td>
 		    	<td> 
 				<label class="checkbox">
@@ -26,7 +21,12 @@
 		    	</td>
 		    	<td> 
 				<label class="checkbox">
-	      			<input type="checkbox" name="checkBoxLeft" value = "socialConn">Social Connection
+	      			<input type="checkbox" name="checkBoxLeft" value = "gossip">Gossip
+		    	</label>
+		    	</td>
+		    	<td> 
+				<label class="checkbox">
+	      			<input type="checkbox" name="checkBoxLeft" value = "socialConn">Chit-chat
 		    	</label>
 		    	</td>
 		    	<td> 
@@ -34,34 +34,79 @@
 	      			<input type="checkbox" name="checkBoxLeft" value = "gameComm">Game Commentary
 		    	</label>
 		    	</td>
-		    </tr>
-		    <tr>
-				<td> 
+		    	<td> 
 				<label class="checkbox">
-	      			<input type="checkbox" name="checkBoxLeft" value = "gossip">Inquiry
+	      			<input type="checkbox" name="checkBoxLeft" value = "nonsense">Nonsense
 		    	</label>
 		    	</td>
 		    	<td> 
 				<label class="checkbox">
-	      			<input type="checkbox" name="checkBoxLeft" value = "gossip">Social Connection
+	      			<input type="checkbox" name="checkBoxLeft" value = "nothing">No text
+		    	</label>
+		    	</td>
+		    	<td> 
+				<label class="checkbox">
+	      			<input type="checkbox" name="checkBoxLeft" value = "other">Other
 		    	</label>
 		    	</td>
 		    </tr>
-			
+ 		    <tr>
+				<td> 
+				<label class="checkbox">
+	      			<input type="checkbox" name="checkBoxLeft" value = "gossip">Gossip
+		    	</label>
+		    	</td>
+		    	<td> 
+				<label class="checkbox">
+	      			<input type="checkbox" name="checkBoxLeft" value = "strategy">Strategy
+		    	</label>
+		    	</td>
+		    </tr>			
 		</tbody>
 		</table>
 	  	</div>
 	</div>
-</template>
-
-<template name = "labelsRight">
-	<div class = "row">
-		<div class = "col-xs-6 col-xs-offset-6">
-			<form role="form" class = "rightLabel">
+</template> -->
+<template name = "labelsLeft">
+	<div class = "row-fluid">
+		<div class = "col-xs-6 labelsLeft">
+			<form role="form" class = "leftLabel">
 			    <label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "gossip">Gossip
+		      		<input type="checkbox" name="checkboxLeft" value = "inquiry">Inquiry
 		    	</label>
 		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "affirmation">Affirmation
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "strategy">Strategy
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "gossip">Gossip
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "socialConn">Chit-Chat
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "gameComm">Game Commentary
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "nonsense">Nonsense
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "nothing">No Text
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxLeft" value = "other">Other
+		    	</label>
+		  	</form>
+	  	</div>
+	</div>
+</template>
+<template name = "labelsRight">
+	<div class = "row-fluid">
+		<div class = "col-xs-6 col-xs-offset-6 labelsRight">
+			<form role="form" class = "rightLabel">
+			    <label class="checkbox-inline">
 		      		<input type="checkbox" name="checkboxRight" value = "inquiry">Inquiry
 		    	</label>
 		    	<label class="checkbox-inline">
@@ -69,6 +114,9 @@
 		    	</label>
 		    	<label class="checkbox-inline">
 		      		<input type="checkbox" name="checkboxRight" value = "strategy">Strategy
+		    	</label>
+		    	<label class="checkbox-inline">
+		      		<input type="checkbox" name="checkboxRight" value = "gossip">Gossip
 		    	</label>
 		    	<label class="checkbox-inline">
 		      		<input type="checkbox" name="checkboxRight" value = "socialConn">Chit-Chat
@@ -80,10 +128,7 @@
 		      		<input type="checkbox" name="checkboxRight" value = "nonsense">Nonsense
 		    	</label>
 		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "other">Other
-		    	</label>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "other">Other
+		      		<input type="checkbox" name="checkboxRight" value = "nothing">No Text
 		    	</label>
 		    	<label class="checkbox-inline">
 		      		<input type="checkbox" name="checkboxRight" value = "other">Other

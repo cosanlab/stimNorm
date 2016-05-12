@@ -6,13 +6,36 @@ var tutorialSteps = [
 		template: "overview"
 	},
 	{	
+		template: "messageInfo",
+		spot: ".bubbleLeft, .labelsRight"
+	},
+	{
+		template: "labelP1",
+		spot: ".labelsLeft"
+	},
+	{
+		template: "labelP2",
+		spot: ".labelsRight"
+	},
+	{	
+		template: "addInfo1",
+		spot: ".bubbleLeft, .labelsRight"
+	},
+	{	
+		template: "addInfo2",
+		spot: ".btnDiv"
+	},
+	{
 		template: "context"
 	},
 	{
-		template: "layout",
+		template: "labels1"
 	},
-	{	
-		template: "example",
+	{
+		template: "labels2"
+	},
+	{
+		template: "labels3"
 	},
 	{
 		template: "summary"

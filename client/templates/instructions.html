@@ -1,6 +1,8 @@
 <template name = "instructions">
 	<div class = "container-fluid">
+		{{> tutorial options}}
 		{{> sampleExchange}}
+		
 
 	</div>
 </template>
@@ -18,20 +20,83 @@
 <template name="overview">
 	<h3 align="center">Overview</h3>
 	<blockquote class = "instr">
-	In this HIT you will be reading a series of chat conversations between individuals and applying a label that best describes the content of what each individual is saying. You will see conversations between <b>3 different pairs </b> of people. Each conversation will consist of <b>10 rounds of exchanges</b>. Each exchange will be comprised of <b>2 messages from each individual</b>.
+	In this HIT you will be reading a series of chat conversations between individuals and applying a label that best describes the content of what each individual is saying. You will see conversations between <b>3 different pairs </b> of people. Each conversation will consist of <b>10 exchanges</b>.
+	</blockquote>
+</template>
+
+<template name = "messageInfo">
+	<h3 align= "center"> Chat Messages</h3>
+	<blockquote class = "instr">
+	Exchanges will appear like this. Each person's individual messages are indicated by colored chat bubbles similar to text messages on a modern smart phone. 
+	</blockquote>
+</template>
+
+<template name = "labelP1">
+<h3 align = "center">Labels for Person 1</h3>
+	<blockquote class = "instr">
+		The different content labels you can apply to Person's 1 message will appear here. Please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least 1</b> label for each message. 
+	</blockquote>
+</template>
+
+<template name = "labelP2">
+<h3 align = "center">Labels for Person 2</h3>
+	<blockquote class = "instr">
+		Likewise the different content labels you can apply to Person's 2 message will appear here. Again please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least 1</b> label for each message. 
+	</blockquote>
+</template>
+
+<template name = "addInfo1">
+	<blockquote class = "instr">
+		During the HIT you will see 10 exchanges like this example and will be able to scroll through them as you apply labels to each message. 
+	</blockquote>
+</template>
+
+<template name = "addInfo2">
+<h3 align = "center">Moving to the next page</h3>
+	<blockquote class = "instr">
+		One you are finished applying a label to each message you can submit your labels using the button beneath the last message. Depending on your screen size you may need to scroll down in order to see this buton. 
 	</blockquote>
 </template>
 
 <template name = "context">
-	<h3 align = "center">Overview (con't)</h3>
+	<h3 align = "center">Background</h3>
 	<blockquote class = "instr">
-		These conversations occurred during a cooperation game in which individuals were making a series of decisions about how much money they wanted to keep for themselves or share with a group of people. The game consisted of 10 rounds and each exchange took place during one round. individuals decided how much money they wanted keep for themselves versus share with the entire group. and they same choices made by other people playing this game. 
+		To provide you with some context, please note that these conversations occurred during an online game that these individuals were playing. Each game consisted of 6 people who were making a series of decisions about how many points they wanted to keep for themselves versus share with the entire group from a total of 100 possible points; these points were later converted to dollars and cents and paid to each indivdual. The game consisted of 10 rounds and each message exchange took place during one round. Individuals were able to see each the decisions made by other people in the game and were free to say anything they like in their messages. To help them recognize each other individuals were given avatars of different animals, specifically a: bee, bird, cat, cow, lion or pig.<br><br>
+		On the next page we will explain the message lables we would like you to use when completing this HIT.  
 	</blockquote>
 </template>
 
+<template name = "labels1">
+<h3 align="center">Applying Labels</h3>
+<blockquote class="instr">
+	Here is a list of the different labels you can apply to each message. Remember please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least one</b> label for each message.
+</blockquote>
+<h4>Inquiry:</h4>
+<p>When an individual is asking a question to the other person</p>
+<p>Example(s): "How many rounds are left?" "What did you see?"</p><br>
+<h4>Affirmation:</h4>
+<p>When an individual replies to a question or statement in a confirmatory way</p><p>Example(s): "Ok" "sure" "will do" </p><br>
+<h4>Strategy:</h4>
+<p>When an individual is discussing game tactics such as: what they think the best action is in the game, what action they are planning to take, or what action the other individual ought to take</p><p>Example(s): "We should all contribute everything" "I'm giving 100" "You should give more" </p><br>
+</template>
 
-<template name = "labelInfo">
-info about labels
+<template name = "labels2">
+<h4>Gossip:</h4>
+<p>When an individual is discussing information about other individuals' behavior (either a specific individual or the entire group). This may include passing judgement on how those players acted.</p><p>Example(s): "Ugh the cat is being so selfish" "Damn that bee!" "Some people only care about themselves"</p><br>
+<h4>Chit-Chat:</h4>
+<p>"Getting-to-know-each-other" types of messages or playful social exchanges. This might be things like finding out more about the other individual or trying to relate to them in some way.</p><p>Example(s): "So how long have you been on mTurk?" "Where are you from?" "I love football too! Who's your favorite team?"</p><br>
+<h4>Game Commentary:</h4>
+<p>Messages remarking on some aspect of the game such as the number of rounds left, what the purpose of this game/experiment is, comments about the requester or experimenter and questions clarifying how to play (but not explicity strategic questions)</p><p>Example(s): "Wait I thought there were only 5 rounds" "I wonder what the point of this is" "Yea this requester is great I've done his HITs in the past"</p><br>
+<p align="center">(continued on the next page)</p>
+</template>
+
+<template name = "labels3">
+<h4>Nonsense:</h4>
+<p>Messages that seem like random string of letters or numbers or seem to be completely random and meaningless.</p><p>Example(s): "!!Ekas" "C mannnn" "00109"</p><br>
+<h4>No Text:</h4>
+<p>Messages that are completeley blank. Occassionally some individuals sent no message to the other person.</p><p>Example(s): " "</p><br>
+<h4>Other:</h4>
+<p>Messages that don't fit into one of the previous labels. We have found that most messages can be described using a combination of the previous labels, but for some messages that may not be true. If so please use this label</p><p>Example(s): "There was once a man who lived in a tree"</p><br>
 </template>
 
 <template name = "layout">
@@ -47,137 +112,25 @@ Recap info
 </template>
 
 <template name ="sampleExchange">
-	<div class = "exchangeInfo">
 
 		<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
+			<div class = "col-xs-6">
 				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
 				<div class="bubbleTriangleLeft"></div>
 			</div>
 		</div>
 		{{> labelsLeft}}	
 		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
+			<div class = "col-xs-6 col-xs-offset-6">
 				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
 				<div class="bubbleTriangleRight"></div>
 			</div>
 		</div>
 		{{> labelsRight}}
 
-				<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
-			</div>
-		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}
-
-				<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
-			</div>
-		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}
-
-				<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
-			</div>
-		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}
-
-				<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
-			</div>
-		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}
 		<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
+			<div class="col-xs-2 col-xs-offset-5 text-center btnDiv">
+				<button type="button" class="btn btn-primary btn-lg submitPair">Submit Pair</button>
 			</div>
 		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}		<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
-			</div>
-		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}		<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
-			</div>
-		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}		<div class = "row">
-			<div class = "col-xs-5 col-xs-offset-1">
-				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>
-				<div class="bubbleTriangleLeft"></div>
-			</div>
-		</div>
-		{{> labelsLeft}}	
-		<div class="row">
-			<div class = "col-xs-5 col-xs-offset-6">
-				<p align="center" class="bubbleRight">This is the first sample message from Person B</p>
-				<div class="bubbleTriangleRight"></div>
-			</div>
-		</div>
-		{{> labelsRight}}
-
-	</div>
-	<br>
-	<!-- add button here -->
 </template>
