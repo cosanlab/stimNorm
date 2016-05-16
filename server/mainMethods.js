@@ -9,7 +9,8 @@ Meteor.methods({
 				doc.pairs[i].rounds[j]['Bm1Lab'] = '';
 				doc.pairs[i].rounds[j]['Bm2Lab'] = '';
 			}
-			doc.pairs[i]['labeled'] = false;
+			doc.pairs[i]['ABlabeled'] = false;
+			doc.pairs[i]['BAlabeled'] = false;
 		}
 		var data = {
 			_id: currentUser,
@@ -18,6 +19,7 @@ Meteor.methods({
 			status: 'consent',
 			consent: false,
 			stimData: doc,
+			direction: 'AB'
 		};
 		Responses.insert(data);
 	},
@@ -43,6 +45,7 @@ Meteor.methods({
 		queryDat['responses.'+idx+'.A'] = data[0];
 		queryDat['responses.'+idx+'.B'] = data[1];
 		Responses.update(currentUser,{$set:queryDat});
+		//Update user direction here
 		if (idx == doc.responses.length-1){
 			Meteor.call('updateInfo',currentUser,{'status':'endSurvey'},'set');
 			var exp = TurkServer.Instance.currentInstance();
