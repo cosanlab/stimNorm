@@ -5,6 +5,6 @@ Template.consent.events({
 	'click #NoConsent': function(event){
 		Meteor.call('checkConsent',Meteor.userId(),false);
 	}
-})
+});
 
 

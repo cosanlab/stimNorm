@@ -3,6 +3,7 @@
         <div class="row well well-xs">
             <div class="col-xs-10 col-xs-offset-1">
                 {{#if user.consent}}
+                {{#if user.passedQuiz}}
                 <h2 align="center">Thank you for participating!</h2>
                 <br>
                 <br>
@@ -19,6 +20,13 @@
                 <p align="center"> Click the button below to submit the HIT.</p>
                 <br>
                 <button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" style="margin-left:auto; margin-right:auto; display:block" id>Submit HIT</button>
+                {{else}}
+                 <h2 align="center">You are not eligible for this HIT</h2>
+                    <br>
+                    <br>
+                    <p align="center">It appears that you did not pass our comprehension quiz and therefore cannot partcipate.</p>
+                    <p align="center">Please return this HIT</p>
+                {{/if}}
                 {{else}}
                 <h2 align="center">You have chosen not to consent</h2>
                     <br>

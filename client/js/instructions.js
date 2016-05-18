@@ -42,17 +42,26 @@ var tutorialSteps = [
 		spot: ".labelsLeft"
 	},
 	{
-		template: "summary"
+		template: "prequiz"
+	},
+	{
+		template: 'quiz',
+		require: {
+			event: 'submittedQuiz'
+		}
 	}
 ];
+
+quizEmitter = new EventEmitter();
 
 Template.instructions.helpers({
 	options: {
 		steps: tutorialSteps,
-		emitter: new EventEmitter(),
+		emitter: quizEmitter,
 		onFinish: function(){
 			var currentUser = Meteor.userId();
-			Meteor.call('updateInfo',currentUser,{'status':'survey'},'set');
+			var passedQuiz = Responses.findOne(currentUser).passedQuiz;
+			Meteor.call('checkEligibility',currentUser,passedQuiz);
 		}
 	},
 	inquiry: function(){

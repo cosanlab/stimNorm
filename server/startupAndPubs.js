@@ -71,8 +71,8 @@
 			examples: "' '"
 		};
 		labels[8] = {
-			_id: 'other',
-			header: 'Other',
+			_id: 'random',
+			header: 'Random',
 			body: "Messages that don't fit into one of the previous labels. We have found that most messages can be described using a combination of the previous labels, but for some messages that may not be true. If so please use this label.",
 			examples: "There was once a man who lived in a tree"
 		};

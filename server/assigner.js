@@ -12,7 +12,7 @@ TurkServer.Assigners.SurveyAssigner = (function(superClass){
 
 	SurveyAssigner.prototype.initialize = function(){
 		SurveyAssigner.__super__.initialize.apply(this,arguments);
-    this.lobby.events.on("consent-received", this.consentReceived.bind(this));
+    this.lobby.events.on("passed-quiz", this.passedQuiz.bind(this));
 	};
 
   	SurveyAssigner.prototype.userJoined = function(asst){
@@ -30,7 +30,7 @@ TurkServer.Assigners.SurveyAssigner = (function(superClass){
   	};
 
     //Triggers a new single-user experiment instance only if they provide consent
-    SurveyAssigner.prototype.consentReceived = function(asst){
+    SurveyAssigner.prototype.passedQuiz = function(asst){
         var treatment = this.batch.getTreatments();
         this.instance = this.batch.createInstance(treatment);
         this.instance.setup();

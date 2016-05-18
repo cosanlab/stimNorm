@@ -31,7 +31,7 @@ Template.survey.events({
 			var exchangeData = data.stimData.pairs[pairNum].rounds;
 			exchangeData = addData(exchangeData,currDir);
 			Meteor.call('addResponses',currentUser,pairNum,currDir,exchangeData);
-			//Empty form and scroll page
+			//Empty form and scroll page REMOVE WHEN DONE DEBUGGING
 			//$('.leftLabel, .rightLabel').trigger('reset');
 			$("html, body").animate({ scrollTop: 0 }, 500);
 			$('#submitValidation').css("visibility", "hidden");

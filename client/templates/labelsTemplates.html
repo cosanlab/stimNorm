@@ -2,86 +2,27 @@
 	<div class = "row-fluid">
 		<div class = "col-xs-6 labelsLeft">
 			<form role="form" class = "leftLabel">
+				{{#each labels}}
 			    <label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "inquiry">Inquiry
+		      		<input type="checkbox" name="checkboxLeft" value = "{{_id}}">{{header}}
 		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "inquiry"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "affirmation">Affirmation
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "affirmation"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "strategy">Strategy
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "strategy"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "gossip">Gossip
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "gossip"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "socialConn">Chit-Chat
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "chitchat"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "gameComm">Game Commentary
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "gameComm"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "nonsense">Nonsense
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "nonsense"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "nothing">No Text
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "noText"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxLeft" value = "other">Other
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "other"></i>
-		  	</form>
+		    	<i class="fa fa-info-circle" aria-hidden="true" id = "{{_id}}"></i>
+		    	{{/each}}
+	    	</form>
 	  	</div>
 	</div>
 </template>
+
 <template name = "labelsRight">
 	<div class = "row-fluid">
 		<div class = "col-xs-6 col-xs-offset-6 labelsRight">
 			<form role="form" class = "rightLabel">
+				{{#each labels}}
 			    <label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "inquiry">Inquiry
+		      		<input type="checkbox" name="checkboxRight" value = "{{_id}}">{{header}}
 		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "inquiry"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "affirmation">Affirmation
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "affirmation"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "strategy">Strategy
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "strategy"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "gossip">Gossip
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "gossip"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "socialConn">Chit-Chat
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "chitchat"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "gameComm">Game Commentary
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "gameComm"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "nonsense">Nonsense
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "nonsense"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "nothing">No Text
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "noText"></i>
-		    	<label class="checkbox-inline">
-		      		<input type="checkbox" name="checkboxRight" value = "other">Other
-		    	</label>
-		    	<i class="fa fa-info-circle" aria-hidden="true" id = "other"></i>
+		    	<i class="fa fa-info-circle" aria-hidden="true" id = "{{_id}}"></i>
+		    	{{/each}}
 		  	</form>
 	  	</div>
 	</div>

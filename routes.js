@@ -18,7 +18,12 @@ Router.route('/consent',{
     return [Meteor.subscribe('Responses')];
   },
   action: function(){
+    var user = Responses.findOne(Meteor.userId());
+    if (user.status == 'consent'){
       this.render('consent');
+    } else if (user.status == 'instructions'){
+      this.render('instructions');
+    }
   },
   onBeforeAction: function() {
     if (!Meteor.user()) {
@@ -37,12 +42,7 @@ Router.route('/survey',{
     return [Meteor.subscribe('Responses')];
   },
   action: function(){
-    var user = Responses.findOne(Meteor.userId());
-    if (user.status == 'instructions'){
-      this.render('instructions');
-    } else if(user.status == 'survey'){
-      this.render('survey');
-    }
+      this.render('survey');   
   },
 
   onBeforeAction: function() {

@@ -3,7 +3,7 @@ Template.endSurvey.helpers({
 		var data = Responses.findOne(Meteor.userId());
 		return{
 			consent: data.consent,
-			status: data.status
+			passedQuiz: data.passedQuiz
 		}
 	}
 });

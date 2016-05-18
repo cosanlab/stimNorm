@@ -16,3 +16,15 @@ function displayModal(template,data, options) {
   Blaze.renderWithData(template, data,dialog.find(".modal-body")[0]);
   return dialog;
 }
+
+Template.labelsLeft.helpers({
+  labels: function(){
+    return Labels.find();
+  }
+});
+
+Template.labelsRight.helpers({
+  labels: function(){
+    return Labels.find();
+  }
+});
