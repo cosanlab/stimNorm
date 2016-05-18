@@ -20,6 +20,7 @@ TurkServer.Assigners.SurveyAssigner = (function(superClass){
   		if (asst.getInstances().length > 0){
   			this.lobby.pluckUsers([asst.userId]);
         asst.showExitSurvey();
+        Meteor.call('updateCounter',asst.userId);
         console.log('TURKER: ' + Date() + ': ' + asst.workerId + ' completed experiment! Sent to exit survey!\n');
   		} else if(!currentUser){
   			Meteor.call('addUser',asst.userId,asst.workerId);

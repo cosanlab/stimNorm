@@ -1,16 +1,14 @@
-Template.survey.onRendered(function(){
-	$('leftLabel').validate();
-	$('rightLabel').validate();
-
-});
-
 Template.survey.helpers({
 	//Find the first pair for which the user has not provided any labels
-	'data':function(){
+	'exchanges':function(){
 		var currentUser = Meteor.userId();
 		var data = Responses.findOne(currentUser);
-		var idx = _.findIndex(data.responses, function(d){return d.ABlabeled === false || d.BAlabeled === false;});
-		var exchangeData = data.stimData.pairs[idx];
+		var key = _.findKey(data.stimData.pairs,function(o){return !o.ABlabeled || !o.BAlabeled;});
+		if (key === undefined){
+			Meteor.call('finished',currentUser);
+			return;
+		}
+		var exchangeData = data.stimData.pairs[key];
 		var currDir = data.direction;
 		var exchanges = makeConvo(exchangeData,currDir);
 		return exchanges;
@@ -20,21 +18,23 @@ Template.survey.helpers({
 Template.survey.events({
 	'click button':function(event){
 		event.preventDefault();
-		//Validation
-		if (($('.leftLabel input:radio:checked').length != 10) || ($('.rightLabel input:radio:checked').length != 10)){
+		//Validation to make sure that every message has at least 1 label applied to it
+		var resps = [];
+		$('.leftLabel, .rightLabel').each(function(){resps.push($(this).find('input:checkbox:checked').length)});
+		if (!resps.every(function(elem){return elem>=1})){
 			$('#submitValidation').css("visibility", "visible");
-			//$('.submitPair').removeClass('btn-primary').addClass('btn-danger').text('Some of the labels are unanswered!');
 		} else{
 			var currentUser = Meteor.userId();
-			var currDir = Responses.findOne(currentUser).direction;
-			//Grab first players data
-			var p1 = _.map($(".leftLabel input[type='radio']:checked"),function(elem){return elem.value});
-			//Grab second players data
-			var p2 = _.map($(".rightLabel input[type='radio']:checked"),function(elem){return elem.value});
-			Meteor.call('addResponses',currentUser,[p1,p2]);
+			var data = Responses.findOne(currentUser);
+			var currDir = data.direction;
+			var pairNum = _.findKey(data.stimData.pairs,function(o){return !o.ABlabeled || !o.BAlabeled;});
+			var exchangeData = data.stimData.pairs[pairNum].rounds;
+			exchangeData = addData(exchangeData,currDir);
+			Meteor.call('addResponses',currentUser,pairNum,currDir,exchangeData);
 			//Empty form and scroll page
-			$('.leftLabel, .rightLabel').trigger('reset');
-			$("html, body").animate({ scrollTop: 0 }, "slow");
+			//$('.leftLabel, .rightLabel').trigger('reset');
+			$("html, body").animate({ scrollTop: 0 }, 500);
+			$('#submitValidation').css("visibility", "hidden");
 			//Refresh the page instead
 			//location.reload(true);
 		}
@@ -45,12 +45,34 @@ Template.survey.events({
 function makeConvo(exchangeData, direction){
 	var rounds = exchangeData.rounds;
 	var exchanges = [];
-	_.each(rounds, function(r){
+	//Because object iteration order isn't guaranteed use an array of keys in order for looping
+	var keys = _.map(_.range(1,_.keys(rounds).length+1),function(elem){return String(elem);});
+	_.each(keys,function(k){
 		if (direction == 'AB'){
-			exchanges.push({'messL':r.Am1,'messR':r.Bm2});
+			exchanges.push({'messL':rounds[k].Am1,'messR':rounds[k].Bm2});
 		} else{
-			exchanges.push({'messL':r.Bm1,'messR':r.Am2});
+			exchanges.push({'messL':rounds[k].Bm1,'messR':rounds[k].Am2});
 		}
-	}); 
+	});
+	return exchanges;
+}
+function addData(exchanges, direction){
+	var left = $('.leftLabel');
+	var right = $('.rightLabel');
+	var idx = 1;
+	for (var i = 0; i < _.keys(exchanges).length; i++){
+		var leftLabels = [];
+		var rightLabels = [];
+			$(left[i]).find('input:checkbox').each(function(){if(this.checked){leftLabels.push(this.value)}});
+			$(right[i]).find('input:checkbox').each(function(){if(this.checked){rightLabels.push(this.value)}});
+		if (direction == 'AB'){
+			exchanges[String(idx)].Am1Lab = leftLabels;
+			exchanges[String(idx)].Bm2Lab = rightLabels;
+		} else if(direction == 'BA'){
+			exchanges[String(idx)].Am2Lab = leftLabels;
+			exchanges[String(idx)].Bm1Lab = rightLabels;
+		}
+		idx += 1;
+	}
 	return exchanges;
 }

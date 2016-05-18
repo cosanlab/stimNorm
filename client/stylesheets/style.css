@@ -1,39 +1,62 @@
 /* Main */
 body{
     padding-top: 50px;
-    padding-bottom: 50px !important;
+    padding-bottom: 200px !important;
 }
-img#logo {
-    width: auto;
-    height: 100%;
-}
-img.avatar{
-  margin-right: 2%;
-}
+
 
 /* Navbar styling */
 .main-banner {
-    height: 80px;
+    height: 70px;
     margin: 0;
     padding-bottom: -5%;
     color: #CCFFFF;
     background-color: #000033 !important;
     border-color: transparent;
 }
+img.avatar{
+  margin-right: 2%;
+}
 .survey-banner{
   top:80px;
   height: 50px;
 }
 .survey-column-title{
-  margin-top: -15px;
-  margin-bottom: 0px;
-
+  margin-top: -1%
 }
 .navbar-header {
     height: 80px;
     width: auto;
     padding: 0;
     margin: 0;
+}
+
+.navbar-brand {
+    padding-left: 0px;
+    padding-top: 0px;
+}
+
+.navbar-nav {
+  display: inline-block;
+  float: none;
+  margin-left: -5%;
+}
+
+.navbar-collapse{
+  text-align: center;
+}
+
+.navbar-nav{
+  margin-top: -.5% !important;
+}
+.navbar-text{
+  font-size: 30px !important;
+}
+
+#title {
+  color: white;
+  font-size: 30px;
+  margin-top: 4%;
 }
 
 /* Footer styling */
@@ -43,10 +66,11 @@ img.avatar{
   bottom: 0%;
   height: 4%;
   background-color: #000033;
+  z-index: 2;
 }
 .footerText {
-  font-size: 13px;
-  margin-top: 10px;
+  font-size: 14px;
+  margin-top: 7px;
   color:#FFFFFF;
 }
 
@@ -64,7 +88,7 @@ border-radius: 10px;
 margin-top: 1%;
 margin-left: 6.5%;
 color: #275A74;
-font-size: 16px;
+font-size: 20px;
 }
 
 .bubbleTriangleLeft {
@@ -94,7 +118,7 @@ border-radius: 10px;
 margin-top: 1%;
 margin-left: 1.25%;
 color:#7F0000;
-font-size: 16px;
+font-size: 20px;
 }
 
 .bubbleTriangleRight {
@@ -142,7 +166,8 @@ p#submitValidation{
   visibility: hidden;
   margin-left: -10%;
   margin-right: -10%;
-  margin-top: -5%;
+  margin-top: 1.5%;
+  margin-bottom: 50px;
 }
 
 blockquote.instr {
@@ -295,35 +320,7 @@ input[type=range].beliefRating{
 .icon-bar {
     background-color: white !important;
 }
-.navbar-brand {
-    height: 80px;
-    padding: 2px;
-}
-.navbar-nav > li > a{
-    height: 80px;
-    padding: 30px 0 30px 30px;
-    margin: 0;
-}
-.navbar-default .navbar-nav > li > a {
-    color: #FFFFFF;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #CCFFFF;
-}
-.navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:hover, 
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #555;
-    background-color: #E7E7E7;
-}
-.navbar-default .navbar-nav > .open > a, 
-.navbar-default .navbar-nav > .open > a:hover, 
-.navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background-color: #D5D5D5;
-}
-.navbar {min-height:40px !important;}
+
 
 /* Progress bar styling */
 #roundCounter{

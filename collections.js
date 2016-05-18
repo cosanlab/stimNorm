@@ -1,4 +1,4 @@
 Stims = new Mongo.Collection('stims');
 Responses = new Mongo.Collection('responses');
-
-//TurkServer.partitionCollection(Responses);
+Counter = new Mongo.Collection('counter');
+TurkServer.partitionCollection(Responses);

@@ -1,75 +1,16 @@
 <template name ="exchange">
-	<div class = "container-fluid exchangeInfo">
 		<div class = "row">
-			<div class = "col-xs-5">
-				<h5 align="center">Message 1</h5>
-				<p align="center" class="bubbleLeft">{{Am1}}</p>
-			</div>
-			<div class = "col-xs-2">
-				<h3 align="center">Round {{roundNum}}</h3>
-			</div>
-			<div class = "col-xs-5">
-				<h5 align="center">Message 1</h5>
-				<p align="center" class="bubbleRight">{{Bm1}}</p>
+			<div class = "col-xs-6">
+				<p align="center" class="bubbleLeft">{{messL}}</p>
+				<div class="bubbleTriangleLeft"></div>
 			</div>
 		</div>
-		<div class = "row">
-			<div class = "col-xs-5">
-				<h5 align="center">Message 2</h5>
-				<p align="center" class = "bubbleLeft">{{Am2}}</p>
-			</div>
-			<div class = "col-xs-5 col-xs-offset-2">
-				<h5 align="center">Message 2</h5>
-				<p align="center" class = "bubbleRight">{{Bm2}}</p>
+		{{> labelsLeft}}	
+		<div class="row">
+			<div class = "col-xs-6 col-xs-offset-6">
+				<p align="center" class="bubbleRight">{{messR}}</p>
+				<div class="bubbleTriangleRight"></div>
 			</div>
 		</div>
-		<div class = "row">
-			<div class = "col-xs-5">
-				<form role="form" align="center" class = "leftLabel">
-				    <label class="radio-inline">
-			      		<input type="radio" name="radioLeft" value = "gossip">Gossip
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioLeft" value = "strategy">Strategy
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioLeft" value = "socialConn">Chit-Chat
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioLeft" value = "gameComm">Game Commentary
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioLeft" value = "nonsense">Nonsense
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioLeft" value = "other">Other
-			    	</label>
-			  	</form>
-		  	</div>
-		  	<div class = "col-xs-5 col-xs-offset-2">
-				<form role="form" align="center" class = "rightLabel">
-					<label class="radio-inline">
-			      		<input type="radio" name="radioRight" value = "gossip">Gossip
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioRight" value = "strategy">Strategy
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioRight" value = "socialConn">Chit-Chat
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioRight" value = "gameComm">Game Commentary
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioRight" value = "nonsense">Nonsense
-			    	</label>
-			    	<label class="radio-inline">
-			      		<input type="radio" name="radioRight" value = "other">Other
-			    	</label>
-			  	</form>
-		  	</div>
-	  	</div>
-	  	<br><br>
-  	</div>
-  	<hr>
+		{{> labelsRight}}
 </template>

@@ -1,17 +1,8 @@
 Meteor.methods({
-	//Add each new user to the database and assign them to a randomly selected stimulus, storing the stimulus data with the user data
 	'addUser':function(currentUser, workerId){
-		var doc = _.sample(Stims.find().fetch(),1);
-		for (var i = 0; i<doc.pairs.length; i++){
-			for (var j = 0; j<doc.pairs[i].rounds.length; j++){
-				doc.pairs[i].rounds[j]['Am1Lab'] = '';
-				doc.pairs[i].rounds[j]['Am2Lab'] = '';
-				doc.pairs[i].rounds[j]['Bm1Lab'] = '';
-				doc.pairs[i].rounds[j]['Bm2Lab'] = '';
-			}
-			doc.pairs[i]['ABlabeled'] = false;
-			doc.pairs[i]['BAlabeled'] = false;
-		}
+		var gameNum = Counter.findOne('counter').val;
+		var gameId = Counter.findOne({idx:gameNum})._id;
+		var doc = Stims.findOne(gameId);
 		var data = {
 			_id: currentUser,
 			workerId: workerId,
@@ -21,7 +12,7 @@ Meteor.methods({
 			stimData: doc,
 			direction: 'AB'
 		};
-		Responses.insert(data);
+		Partitioner.directOperation(function(){Responses.insert(data);});
 	},
 	//Consent checker that triggers lobby event or routes user to exit-survey
 	'checkConsent': function(currentUser,consent){
@@ -38,37 +29,57 @@ Meteor.methods({
 			console.log('TURKER: ' + Date() + ': ' + asst.workerId + ' did NOT consent! Sent to exit survey!\n');
 		}
 	},
-	'addResponses': function(currentUser,data){
+
+	'addResponses': function(currentUser,pairNum,currDir,exchangeData){
 		var doc = Responses.findOne(currentUser);
-		var idx = String(_.findIndex(doc.responses, function(d){return d.A.length == 0 && d.B.length==0;}));
-		var queryDat = {};
-		queryDat['responses.'+idx+'.A'] = data[0];
-		queryDat['responses.'+idx+'.B'] = data[1];
-		Responses.update(currentUser,{$set:queryDat});
-		//Update user direction here
-		if (idx == doc.responses.length-1){
-			Meteor.call('updateInfo',currentUser,{'status':'endSurvey'},'set');
-			var exp = TurkServer.Instance.currentInstance();
-			exp.teardown(returnToLobby = true);
+		var query= {};
+		query['stimData.pairs.' + pairNum + '.rounds'] = exchangeData;
+		if (currDir == 'AB'){
+			query['stimData.pairs.' + pairNum + '.ABlabeled'] = true;
+			query['direction'] = 'BA';
+		} else if (currDir == 'BA'){
+			query['stimData.pairs.' + pairNum + '.BAlabeled'] = true;
+			query['direction'] = 'AB';
 		}
+		Meteor.call('updateInfo',currentUser,query,'set');
+	},
+
+	'finished': function(currentUser){
+		Meteor.call('updateInfo',currentUser,{'status':'endSurvey'},'set');
+		var exp = TurkServer.Instance.currentInstance();
+		if(exp != null){
+			exp.teardown(returnToLobby= true);
+		}
+	},
+	'updateCounter': function(currentUser){
+		var gameId = Responses.findOne(currentUser).stimData._id;
+		var currGameNum = Counter.findOne('counter').val;
+		if (currGameNum == 76){
+			currGameNum = 0;
+		} else{
+			currGameNum +=1;
+		}
+		Counter.update('counter',{$set: {'val':currGameNum}});
+		Counter.update(gameId,{$inc:{'labelCount':1}});
 	},
 
 	//General purpose document modification function
 	'updateInfo': function(currentUser,data,operation){
 		if(operation == 'set'){
-			Responses.update(currentUser, {$set: data});
+			Partitioner.directOperation(function(){
+				Responses.update(currentUser, {$set: data});
+			});
 		} else if(operation == 'inc'){
-			Responses.update(currentUser, {$inc: data});
+			Partitioner.directOperation(function(){
+				Responses.update(currentUser, {inc: data});
+			});
+			//Responses.update(currentUser, {$inc: data});
 		} else if(operation == 'dec'){
-			Responses.update(currentUser, {$dec: data});
+			Partitioner.directOperation(function(){
+				Responses.update(currentUser, {dec: data});
+			});
+			//Responses.update(currentUser, {$dec: data});
 		}
 
 	}
 });
-
-//Function to make a variable-based dot-notation query for updating a nested mongo document 
-function makePQuery(currentUser,field,value){
-	var pKey = {};
-	pKey['players.' + currentUser + '.' + field] = value;
-	return pKey;
-}

@@ -5,12 +5,13 @@
  	var fs = Npm.require('fs');
  	files = fs.readdirSync("../../../../../private/",function(e,r){});
  	done = Meteor.bindEnvironment(function(files){
- 		return _.each(files,function(filename){
+ 		return _.each(files,function(filename,i){
  			var game = JSON.parse(Assets.getText(filename));
  			var exists = Stims.findOne(game._id);
  			if(!exists){
  				Stims.insert(game);
  				console.log('Game: ' + filename + ' added to db!');
+ 				Counter.insert({_id:game._id,'idx':i,'labelCount':0});
  			} else{
  				console.log('Game: ' + filename + ' already in db!')
  			} 			
@@ -19,6 +20,10 @@
  		throw e;
  	});
  	done(files)
+ 	var counterExists = Counter.findOne('counter');
+ 	if(!counterExists){
+ 		Counter.insert({_id:'counter',val:0});
+ 	}
  	try {
 	 	//Create a single batch
 		Batches.upsert({'name':'main'},{'name':'main',active:true});
