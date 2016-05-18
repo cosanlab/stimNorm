@@ -32,7 +32,7 @@
 <template name = "labelP1">
 <h3 align = "center">Labels for Person 1</h3>
 	<blockquote class = "instr">
-		The different content labels you can apply to Person's 1 message will appear here. Please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least 1</b> label for each message. 
+		The different content labels you can apply to Person's 1 message will appear here. Please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least 1</b> label for each message. <br>
 	</blockquote>
 </template>
 
@@ -69,32 +69,27 @@
 <blockquote class="instr">
 	Here is a list of the different labels you can apply to each message. Remember please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least one</b> label for each message.
 </blockquote>
-<h4>Inquiry:</h4>
-<p>When an individual is asking a question to the other person</p>
-<p>Example(s): "How many rounds are left?" "What did you see?"</p><br>
-<h4>Affirmation:</h4>
-<p>When an individual replies to a question or statement in a confirmatory way</p><p>Example(s): "Ok" "sure" "will do" </p><br>
-<h4>Strategy:</h4>
-<p>When an individual is discussing game tactics such as: what they think the best action is in the game, what action they are planning to take, or what action the other individual ought to take</p><p>Example(s): "We should all contribute everything" "I'm giving 100" "You should give more" </p><br>
+{{> Template.dynamic template="labelInfo" data=inquiry}}
+{{> Template.dynamic template="labelInfo" data=affirmation}}
+{{> Template.dynamic template="labelInfo" data=strategy}}
+<p align="center">(continued on the next page)</p>
 </template>
 
 <template name = "labels2">
-<h4>Gossip:</h4>
-<p>When an individual is discussing information about other individuals' behavior (either a specific individual or the entire group). This may include passing judgement on how those players acted.</p><p>Example(s): "Ugh the cat is being so selfish" "Damn that bee!" "Some people only care about themselves"</p><br>
-<h4>Chit-Chat:</h4>
-<p>"Getting-to-know-each-other" types of messages or playful social exchanges. This might be things like finding out more about the other individual or trying to relate to them in some way.</p><p>Example(s): "So how long have you been on mTurk?" "Where are you from?" "I love football too! Who's your favorite team?"</p><br>
-<h4>Game Commentary:</h4>
-<p>Messages remarking on some aspect of the game such as the number of rounds left, what the purpose of this game/experiment is, comments about the requester or experimenter and questions clarifying how to play (but not explicity strategic questions)</p><p>Example(s): "Wait I thought there were only 5 rounds" "I wonder what the point of this is" "Yea this requester is great I've done his HITs in the past"</p><br>
+{{> Template.dynamic template="labelInfo" data=gossip}}
+{{> Template.dynamic template="labelInfo" data=chitchat}}
+{{> Template.dynamic template="labelInfo" data=gameComm}}
 <p align="center">(continued on the next page)</p>
 </template>
 
 <template name = "labels3">
-<h4>Nonsense:</h4>
-<p>Messages that seem like random string of letters or numbers or seem to be completely random and meaningless.</p><p>Example(s): "!!Ekas" "C mannnn" "00109"</p><br>
-<h4>No Text:</h4>
-<p>Messages that are completeley blank. Occassionally some individuals sent no message to the other person.</p><p>Example(s): " "</p><br>
-<h4>Other:</h4>
-<p>Messages that don't fit into one of the previous labels. We have found that most messages can be described using a combination of the previous labels, but for some messages that may not be true. If so please use this label</p><p>Example(s): "There was once a man who lived in a tree"</p><br>
+{{> Template.dynamic template="labelInfo" data=nonsense}}
+{{> Template.dynamic template="labelInfo" data=noText}}
+{{> Template.dynamic template="labelInfo" data=other}}
+</template>
+
+<template name = "labels4">
+<blockquote>At anytime during the HIT you can click on these info icons next to each labels to remind yourself what these labels mean.</blockquote>
 </template>
 
 <template name = "summary">

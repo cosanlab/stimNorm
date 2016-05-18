@@ -1,7 +1,7 @@
  Meteor.startup(function(){
  	//Read in each game's data as json file and add to mongo collection
  	//Should be able to adapt to any stimlus type
- 	var done, files;
+ 	var done, files, labelMaker;
  	var fs = Npm.require('fs');
  	files = fs.readdirSync("../../../../../private/",function(e,r){});
  	done = Meteor.bindEnvironment(function(files){
@@ -19,11 +19,77 @@
  	}, function(e){
  		throw e;
  	});
- 	done(files)
+ 	done(files);
+ 	labelMaker = Meteor.bindEnvironment(function(){
+		var labels = [];
+		labels[0] = {
+			_id: 'gossip',
+			header: 'Gossip',
+			body: "When an individual is discussing information about other individuals' behavior (either a specific individual or the entire group). This may include passing judgement on how those players acted.",
+			examples: "'Ugh the cat is being so selfish', 'Damn that bee!','Some people only care about themselves'"
+		};
+		labels[1] = {
+			_id: 'inquiry',
+			header: 'Inquiry',
+			body: "When an individual is asking a question to the other person.",
+			examples: "'How many rounds are left?', 'What did you see?'"
+		};
+		labels[2] = {
+			_id: 'affirmation',
+			header: 'Affirmation',
+			body: "When an individual replies to a question or statement in a confirmatory way.",
+			examples: "'Ok','sure' 'will do','I agree'"
+		};
+		labels[3] = {
+			_id: 'strategy',
+			header: 'Strategy',
+			body: "When an individual is discussing game tactics such as: what they think the best action is in the game, what action they are planning to take, or what action the other individual ought to take.",
+			examples: "'We should all contribute everything', 'I'm giving 100', 'You should give more'"
+		};
+		labels[4] = {
+			_id: 'chitchat',
+			header: 'Chit-chat',
+			body: "'Getting-to-know-each-other' types of messages or playful social exchanges. This might be things like finding out more about the other individual or trying to relate to them in some way.",
+			examples: "'So how long have you been on mTurk?', 'Where are you from?', 'I love football too! Who's your favorite team?'"
+		};
+		labels[5] = {
+			_id: 'gameComm',
+			header: 'Game Commentary',
+			body: "Messages remarking on some aspect of the game such as the number of rounds left, what the purpose of this game/experiment is, comments about the requester or experimenter and questions clarifying how to play (but not explicity strategic questions).",
+			examples: "'Wait I thought there were only 5 rounds', 'I wonder what the point of this is','Yea this requester is great I've done his HITs in the past', 'This is really boring'"
+		};
+		labels[6] = {
+			_id: 'nonsense',
+			header: 'Nonsense',
+			body: "Messages that seem like random string of letters or numbers or seem to be completely random and meaningless.",
+			examples: "'!!Ekas','C mannnn','00109'"
+		};
+		labels[7] = {
+			_id: 'noText',
+			header: 'No Text',
+			body: "Messages that are completeley blank. Occassionally some individuals sent no message to the other person.",
+			examples: "' '"
+		};
+		labels[8] = {
+			_id: 'other',
+			header: 'Other',
+			body: "Messages that don't fit into one of the previous labels. We have found that most messages can be described using a combination of the previous labels, but for some messages that may not be true. If so please use this label.",
+			examples: "There was once a man who lived in a tree"
+		};
+		for(var i = 0; i<labels.length; i++){
+			var exists = Labels.findOne(labels[i]._id);
+			if(!exists){
+				Labels.insert(labels[i]);
+			}
+		}
+
+ 	});
+ 	labelMaker();
  	var counterExists = Counter.findOne('counter');
  	if(!counterExists){
  		Counter.insert({_id:'counter',val:0});
  	}
+
  	try {
 	 	//Create a single batch
 		Batches.upsert({'name':'main'},{'name':'main',active:true});
@@ -43,5 +109,8 @@
 //Labels applied
 Meteor.publish('Responses',function(){
 	var currentUser = this.userId;
-	return Responses.find(currentUser)
+	return Responses.find(currentUser);
+});
+Meteor.publish('Labels',function(){
+	return Labels.find();
 });

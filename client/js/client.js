@@ -18,6 +18,7 @@ Meteor.startup(function(){
 //Data subscriptions
 Tracker.autorun(function(){
 	Meteor.subscribe('Responses');
+    Meteor.subscribe('Labels');
 });
 
 //New Spacebars function that should work on all templates
