@@ -25,8 +25,8 @@
 		labels[0] = {
 			_id: 'gossip',
 			header: 'Gossip',
-			body: "When an individual is discussing information about other individuals' behavior (either a specific individual or the entire group). This may include passing judgement on how those players acted.",
-			examples: "'Ugh the cat is being so selfish', 'Damn that bee!','Some people only care about themselves'"
+			body: "When an individual is discussing information about other individuals' behavior (either a specific individual or the entire group). This may include passing judgement on how those players acted. Sometimes this may simply be the number of points contributed by another person with no other words.",
+			examples: "'Ugh the cat is being so selfish', 'Damn that bee!','Some people only care about themselves' 'I see 50' '100'"
 		};
 		labels[1] = {
 			_id: 'inquiry',
@@ -38,7 +38,7 @@
 			_id: 'affirmation',
 			header: 'Affirmation',
 			body: "When an individual replies to a question or statement in a confirmatory way.",
-			examples: "'Ok','sure' 'will do','I agree'"
+			examples: "'Ok', 'sure', 'will do','I agree'"
 		};
 		labels[3] = {
 			_id: 'strategy',
@@ -50,11 +50,11 @@
 			_id: 'chitchat',
 			header: 'Chit-chat',
 			body: "'Getting-to-know-each-other' types of messages or playful social exchanges. This might be things like finding out more about the other individual or trying to relate to them in some way.",
-			examples: "'So how long have you been on mTurk?', 'Where are you from?', 'I love football too! Who's your favorite team?'"
+			examples: "'So how long have you been on mTurk?', 'Where are you from?', 'I love football too! Who's your favorite team?' 'Are you a bot?'"
 		};
 		labels[5] = {
-			_id: 'gameComm',
-			header: 'Game Commentary',
+			_id: 'gameMech',
+			header: 'Game Mechanics',
 			body: "Messages remarking on some aspect of the game such as the number of rounds left, what the purpose of this game/experiment is, comments about the requester or experimenter and questions clarifying how to play (but not explicity strategic questions).",
 			examples: "'Wait I thought there were only 5 rounds', 'I wonder what the point of this is','Yea this requester is great I've done his HITs in the past', 'This is really boring'"
 		};
@@ -65,10 +65,10 @@
 			examples: "'!!Ekas','C mannnn','00109'"
 		};
 		labels[7] = {
-			_id: 'noText',
-			header: 'No Text',
-			body: "Messages that are completeley blank. Occassionally some individuals sent no message to the other person.",
-			examples: "' '"
+			_id: 'briefExp',
+			header: 'Brief Expressions',
+			body: "Brief one or two word messages that include things like emoticons, exclamations, laughing, abbreviations and chat slang.",
+			examples: "'lol','haha','!!!',':)'"
 		};
 		labels[8] = {
 			_id: 'random',
@@ -76,6 +76,13 @@
 			body: "Messages that don't fit into one of the previous labels. We have found that most messages can be described using a combination of the previous labels, but for some messages that may not be true. If so please use this label.",
 			examples: "There was once a man who lived in a tree"
 		};
+		labels[9] = {
+			_id: 'noText',
+			header: 'No Text',
+			body: "Messages that are completeley blank. Occassionally some individuals sent no message to the other person.",
+			examples: "' '"
+		};
+
 		for(var i = 0; i<labels.length; i++){
 			var exists = Labels.findOne(labels[i]._id);
 			if(!exists){

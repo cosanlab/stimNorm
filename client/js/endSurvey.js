@@ -3,7 +3,8 @@ Template.endSurvey.helpers({
 		var data = Responses.findOne(Meteor.userId());
 		return{
 			consent: data.consent,
-			passedQuiz: data.passedQuiz
+			passedQuiz: data.passedQuiz,
+			bonus: BONUS.toFixed(2)
 		}
 	}
 });
@@ -36,6 +37,7 @@ Template.endSurvey.events({
 			gender = 'NA';
 		}
 		Meteor.call('updateInfo',currentUser,{'feedback':feedback,'age':age,'gender':gender,'belief':belief},'set');
+		Meteor.call('addBonus',currentUser);
 		results = {Feedback: feedback};
 		TurkServer.submitExitSurvey(results);
 	}

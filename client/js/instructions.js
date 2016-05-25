@@ -42,6 +42,10 @@ var tutorialSteps = [
 		spot: ".labelsLeft"
 	},
 	{
+		template: "labels5",
+		spot: "#gameInfo"
+	},
+	{
 		template: "prequiz"
 	},
 	{
@@ -62,6 +66,7 @@ Template.instructions.helpers({
 			var currentUser = Meteor.userId();
 			var passedQuiz = Responses.findOne(currentUser).passedQuiz;
 			Meteor.call('checkEligibility',currentUser,passedQuiz);
+			$("html, body").animate({ scrollTop: 0 }, 100);
 		}
 	},
 	inquiry: function(){
@@ -73,14 +78,14 @@ Template.instructions.helpers({
 	strategy: function(){
 		return Labels.findOne('strategy');
 	},
-	gameComm: function(){
-		return Labels.findOne('gameComm');
+	gameMech: function(){
+		return Labels.findOne('gameMech');
 	},
 	noText: function(){
 		return Labels.findOne('noText');
 	},
-	other: function(){
-		return Labels.findOne('other');
+	random: function(){
+		return Labels.findOne('random');
 	},
 	nonsense: function(){
 		return Labels.findOne('nonsense');
@@ -90,6 +95,9 @@ Template.instructions.helpers({
 	},
 	affirmation: function(){
 		return Labels.findOne('affirmation');
+	},
+	briefExp: function(){
+		return Labels.findOne('briefExp');
 	}
 });
 

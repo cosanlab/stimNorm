@@ -35,7 +35,7 @@ Meteor.methods({
 		var workerId = asst.workerId;
 		var batch = TurkServer.Batch.getBatch(asst.batchId);
 		if (passedQuiz){
-			Meteor.call('updateInfo',currentUser,{'status':'survey'},'set');
+			Meteor.call('updateInfo',currentUser,{'status':'survey','startTime': new Date()},'set');
 			var emitter = batch.lobby.events;
 			emitter.emit('passed-quiz',asst);
 			console.log('TURKER: ' + Date() +': ' + workerId + ' passed Quiz! Sent to experiment!\n');
@@ -61,12 +61,16 @@ Meteor.methods({
 		Meteor.call('updateInfo',currentUser,query,'set');
 	},
 
-	'finished': function(currentUser,status){
-		Meteor.call('updateInfo',currentUser,{'status':status},'set');
+	'finished': function(currentUser){
+		Meteor.call('updateInfo',currentUser,{'status':'finished','endTime': new Date()},'set');
 		var exp = TurkServer.Instance.currentInstance();
 		if(exp != null){
 			exp.teardown(returnToLobby= true);
 		}
+	},
+	'addBonus': function(currentUser){
+		var asst = TurkServer.Assignment.getCurrentUserAssignment(currentUser);
+		asst.addPayment(BONUS);
 	},
 	'updateCounter': function(currentUser){
 		var gameId = Responses.findOne(currentUser).stimData._id;

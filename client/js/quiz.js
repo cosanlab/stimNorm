@@ -3,51 +3,33 @@ var Questions = new Mongo.Collection(null);
 var questions = [];
 
 questions[0] = {
-	text: "1) Man that bee really stings",
+	text: "1) Ugh that bee is the worst",
 	answer: ['gossip'],
 	correct: false,
 	answered: false
 };
 questions[1] = {
-	text: "2) I'm giving 100",
-	answer: ['strategy'],
+	text: "2) I'm giving 100. How much are you?",
+	answer: ['strategy','inquiry'],
 	correct: false,
 	answered: false
 };
 questions[2] = {
-	text: "3) I thought there were only 5 rounds",
-	answer: ['game commentary'],
+	text: "3) Yea both gave 50",
+	answer: ['gossip'],
 	correct: false,
 	answered: false
 };
 
 questions[3] = {
-	text: "4) Why is the sky blue?",
-	answer: ['random'],
+	text: "4) This is boring. How many rounds are left?",
+	answer: ['gameMech','inquiry'],
 	correct: false,
 	answered: false
 };
 questions[4] = {
-	text: "5) mulalalooo",
-	answer: ['nonsense'],
-	correct: false,
-	answered: false
-};
-questions[5] = {
-	text: "6) Yea I've been on mturk for 3 years now",
-	answer: ['chit-chat'],
-	correct: false,
-	answered: false
-};
-questions[6] = {
-	text: "7) Agreed",
-	answer: ['affirmation'],
-	correct: false,
-	answered: false
-};
-questions[7] = {
-	text: "8) What did you see?",
-	answer: ['inquiry'],
+	text: "5) haha :)",
+	answer: ['briefExp'],
 	correct: false,
 	answered: false
 };
@@ -72,6 +54,9 @@ Template.quiz.helpers({
 Template.question.helpers({
 	incorrect: function(){
 		return this.answered && !this.correct;
+	},
+	labels: function(){
+		return Labels.find();
 	}
 });
 
@@ -83,10 +68,11 @@ Template.quiz.events({
 		var currentUser = Meteor.userId();
 		var quizAttempts = Responses.findOne(currentUser).quizAttempts;
 		var form = event.target;
-		Questions.find().forEach(function (q) {
-			var answer = $.trim(form[q._id].value.toLowerCase());
-			var correct = $.inArray(answer,q.answer) >= 0 ? true: false;
-			Questions.update({_id: q._id}, {$set: {correct: correct, answered: true}});
+		Questions.find().forEach(function(q){
+			var vals = [];
+			$('#'+q._id).find('input:checkbox').each(function(){if(this.checked){vals.push(this.value)}});
+			var correct = _.intersection(vals,q.answer).length > 0 ? true: false;
+			Questions.update({_id: q._id},{$set: {correct:correct,answered:true}});
 		});
 		var result = Questions.find({correct:true}).count() == Questions.find().count();
 		if(!result){
@@ -101,3 +87,9 @@ Template.quiz.events({
 		}
 	}
 });
+
+
+
+
+
+	 	

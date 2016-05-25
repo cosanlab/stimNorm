@@ -1,11 +1,19 @@
 <template name= "survey">
 	<div class = "container-fluid">
-		{{#each exchanges}}
+	<div class="row well well-sm" id= "infoHeader">
+		<div class="col-xs-3">
+			<p id = "pageInfo">Page {{exchanges.pageNum}} of 6</p>
+		</div>
+		<div class="col-xs-1 col-xs-offset-8">
+		<p align="right"><i class="fa fa-question-circle fa-2x" aria-hidden="true" id="gameInfo"></i></p>		
+		</div>
+	</div>
+		{{#each exchanges.exchanges}}
 			{{> exchange}}
 		{{/each}}
 		<div class = "row">
 			<div class="col-xs-2 col-xs-offset-5 text-center">
-				<button type="button" class="btn btn-primary btn-lg submitPair">Submit Pair {{data.pairNum}}</button>
+				<button type="button" class="btn btn-primary btn-lg submitPair">Submit Pair</button>
 				<br>
 				<p id='submitValidation'>One or more of the messages are unlabeled!</p>
 			</div>

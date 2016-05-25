@@ -6,6 +6,14 @@ Template.labelsLeft.events({
 	}
 });
 
+Template.labelsRight.events({
+  'click .fa':function(event){
+    var val = $(event.currentTarget).attr('id');
+    var data = Labels.findOne(val);
+    displayModal(Template.labelInfo,data);
+  }
+});
+
 function displayModal(template,data, options) {
   // minimum options to get message to show
   options = options || { message: " " };

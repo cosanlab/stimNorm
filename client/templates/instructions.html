@@ -8,7 +8,7 @@
 <template name="accept">
 	<h3 align="center"> Thank you for accepting this HIT</h3>
 	<blockquote class = "instr">
-		For the best experience please maximize this window so it takes up the entire screen. <br><br>
+		For the best experience please <b>maximize this window</b> so it takes up the entire screen. <br><br>
 		Please read the following set of instructions <i>carefully</i>.<br><br>You may move forward and backwards through any page of these instructions at any time.
 	</blockquote>
 	<br>
@@ -30,16 +30,16 @@
 </template>
 
 <template name = "labelP1">
-<h3 align = "center">Labels for Person 1</h3>
+<h3 align = "center">Labels for Person A</h3>
 	<blockquote class = "instr">
-		The different content labels you can apply to Person's 1 message will appear here. Please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least 1</b> label for each message. <br>
+		The different content labels you can apply to Person A's message will appear here. Please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least one</b> label for each message. <br>
 	</blockquote>
 </template>
 
 <template name = "labelP2">
-<h3 align = "center">Labels for Person 2</h3>
+<h3 align = "center">Labels for Person B</h3>
 	<blockquote class = "instr">
-		Likewise the different content labels you can apply to Person's 2 message will appear here. Again please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least 1</b> label for each message. 
+		Likewise the different content labels you can apply to Person B's message will appear here. Again please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least one</b> label for each message. 
 	</blockquote>
 </template>
 
@@ -52,57 +52,90 @@
 <template name = "addInfo2">
 <h3 align = "center">Moving to the next page</h3>
 	<blockquote class = "instr">
-		One you are finished applying a label to each message you can submit your labels using the button beneath the last message. Depending on your screen size you may need to scroll down in order to see this buton. 
+		One you are finished applying a label to each message you can submit your labels using the button beneath the last message. You will need to scroll down below the last message in order to see this buton. 
 	</blockquote>
 </template>
 
 <template name = "context">
 	<h3 align = "center">Background</h3>
 	<blockquote class = "instr">
-		To provide you with some context, please note that these conversations occurred during an online game that these individuals were playing. Each game consisted of 6 people who were making a series of decisions about how many points they wanted to keep for themselves versus share with the entire group from a total of 100 possible points; these points were later converted to dollars and cents and paid to each indivdual. The game consisted of 10 rounds and each message exchange took place during one round. Individuals were able to see each the decisions made by other people in the game and were free to say anything they like in their messages. To help them recognize each other individuals were given avatars of different animals, specifically a: bee, bird, cat, cow, lion or pig.<br><br>
+		To provide you with some context, note that these conversations occurred during game-based experiment played by a group of 6 players. The game consisted of 10 rounds. Each round consisted of the following:<br><br>
+		<ol>
+		<li>Each player was given 100 points and made a decision about how many points they wanted to to keep for themselves versus share with the group</li>
+		<li>Each player was shown the decisions made by some of the other players in the game</li>
+		<li>Each player was allowed to send and receive a message from another player; players were free to say anything they wanted in their messages.</li>
+		</ol>
+		<br>
+		To help recognize each other, players were given avatars of different animals, specifically a: bee, bird, cat, cow, lion or pig.<br><br>
 		On the next page we will explain the message lables we would like you to use when completing this HIT.  
 	</blockquote>
 </template>
+
+<template name = "contextInHIT">
+	<h3 align = "center">Background</h3>
+	<blockquote class = "instr">
+		Remember that these conversations occurred during an online game-based experiment between 6 players. The game consisted of 10 rounds. Each round consisted of the following:<br><br>
+		<ol>
+		<li>Each player was given 100 points and made a decision about how many points they wanted to to keep for themselves versus share with the group</li>
+		<li>Each player was shown the decisions made by some of the other players in the game</li>
+		<li>Each player was allowed to send and receive a message from another player; players were free to say anything they wanted in their messages.</li>
+		</ol>
+		<br>
+		To help recognize each other players were given avatars of different animals, specifically a: bee, bird, cat, cow, lion or pig.<br> The messages shown here consist of 10 exchanges, between 2 players, 1 from each round. <br><br>
+		Remember to please select <b>as many labels</b> as you feel appropriately describe the content of each message.
+	</blockquote>
+</template>
+
 
 <template name = "labels1">
 <h3 align="center">Applying Labels</h3>
 <blockquote class="instr">
 	Here is a list of the different labels you can apply to each message. Remember please select <b>as many labels</b> as you feel appropriately describe the content of the message. Please be sure to select <b>at least one</b> label for each message.
 </blockquote>
+{{> Template.dynamic template="labelInfo" data=gossip}}
 {{> Template.dynamic template="labelInfo" data=inquiry}}
 {{> Template.dynamic template="labelInfo" data=affirmation}}
-{{> Template.dynamic template="labelInfo" data=strategy}}
 <p align="center">(continued on the next page)</p>
 </template>
 
 <template name = "labels2">
-{{> Template.dynamic template="labelInfo" data=gossip}}
+{{> Template.dynamic template="labelInfo" data=strategy}}
 {{> Template.dynamic template="labelInfo" data=chitchat}}
-{{> Template.dynamic template="labelInfo" data=gameComm}}
+{{> Template.dynamic template="labelInfo" data=gameMech}}
 <p align="center">(continued on the next page)</p>
 </template>
 
 <template name = "labels3">
 {{> Template.dynamic template="labelInfo" data=nonsense}}
+{{> Template.dynamic template="labelInfo" data=briefExp}}
+{{> Template.dynamic template="labelInfo" data=random}}
 {{> Template.dynamic template="labelInfo" data=noText}}
-{{> Template.dynamic template="labelInfo" data=other}}
 </template>
 
 <template name = "labels4">
 <h3 align="center">Referencing Labels During HIT</h3>
-<blockquote>At anytime during the HIT you can click on these info icons next to each labels to remind yourself what these labels mean.</blockquote>
+<blockquote>At anytime during the HIT you can click on these info icons next to each label to remind yourself what these labels mean.</blockquote>
+</template>
+
+<template name = "labels5">
+<h3 align="center">Referencing Background Info During HIT</h3>
+<blockquote>At anytime during the HIT you can click on this info button remind yourself about the background context in which these messages were sent.</blockquote>
 </template>
 
 <template name = "prequiz">
 <h3 align="center">Please be sure you have understood instructions</h3>
 <blockquote class = "instr">
-		On the next page we will ask you some questions to ensure your understanding. If you fail to answer these questions correctly you will not be eligible complete this HIT and will be asked to return it.<br><br>
+		On the next page we will ask you some questions to ensure your understanding. If you fail to answer these questions correctly you will not be eligible to complete this HIT and will be asked to return it.<br><br>
 		You may move backwards and forwards through these instructions screens as much as you like before and during the quiz.
 	</blockquote>
 </template>
 
 <template name ="sampleExchange">
-
+	<div class="row well well-sm" id= "infoHeader">
+		<div class="col-xs-1 col-xs-offset-11">
+		<p align="right"><i class="fa fa-question-circle fa-2x" aria-hidden="true" id="gameInfo"></i></p>		
+		</div>
+	</div>
 		<div class = "row">
 			<div class = "col-xs-6">
 				<p align="center" class="bubbleLeft">This is the first sample message from Person A</p>

@@ -8,11 +8,18 @@ Template.survey.helpers({
 			Meteor.call('finished',currentUser);
 			return;
 		}
+		var pageNum = parseInt(key)*2-1;
 		var exchangeData = data.stimData.pairs[key];
 		var currDir = data.direction;
+		if (currDir == 'BA'){
+			pageNum += 1;
+		}
 		var exchanges = makeConvo(exchangeData,currDir);
-		return exchanges;
-	}
+		return {
+			exchanges: exchanges,
+			pageNum: pageNum
+		};
+	},
 });
 
 Template.survey.events({
@@ -32,15 +39,22 @@ Template.survey.events({
 			exchangeData = addData(exchangeData,currDir);
 			Meteor.call('addResponses',currentUser,pairNum,currDir,exchangeData);
 			//Empty form and scroll page REMOVE WHEN DONE DEBUGGING
-			//$('.leftLabel, .rightLabel').trigger('reset');
+			$('.leftLabel, .rightLabel').trigger('reset');
 			$("html, body").animate({ scrollTop: 0 }, 500);
 			$('#submitValidation').css("visibility", "hidden");
 			//Refresh the page instead
 			//location.reload(true);
 		}
+	},
+	'click #gameInfo': function(event){
+		event.preventDefault();
+		event.stopPropagation();
+		displayModalNoData(Template.contextInHIT);
 	}
 
 });
+
+
 
 function makeConvo(exchangeData, direction){
 	var rounds = exchangeData.rounds;
@@ -75,4 +89,14 @@ function addData(exchanges, direction){
 		idx += 1;
 	}
 	return exchanges;
+}
+
+function displayModalNoData(template, options) {
+  // minimum options to get message to show
+  options = options || { message: " " };
+  var dialog = bootbox.alert(options);
+  // Take out the default body that bootbox rendered
+  dialog.find(".bootbox-body").remove();
+  Blaze.render(template, dialog.find(".modal-body")[0]);
+  return dialog;
 }
